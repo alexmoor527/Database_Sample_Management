@@ -11,6 +11,14 @@ CREATE TABLE Operators (
 	Status ENUM('Active', 'Inactive') DEFAULT 'Active'
 );
 
+-- Create Analysts table
+CREATE TABLE Analysts (
+    AnalystID INT PRIMARY KEY AUTO_INCREMENT,
+    Name VARCHAR(100),
+    ContactInfo TEXT,
+	Status ENUM('Active', 'Inactive') DEFAULT 'Active'
+);
+
 -- Create Experiments table
 CREATE TABLE Experiments (
     ExperimentID INT PRIMARY KEY AUTO_INCREMENT,
@@ -44,13 +52,7 @@ CREATE TABLE AnalyticalMethods (
 	Status ENUM('Active', 'Inactive') DEFAULT 'Active'
 );
 
--- Create Analysts table
-CREATE TABLE Analysts (
-    AnalystID INT PRIMARY KEY AUTO_INCREMENT,
-    Name VARCHAR(100),
-    ContactInfo TEXT,
-	Status ENUM('Active', 'Inactive') DEFAULT 'Active'
-);
+
 
 -- Create QuantitativeResults table
 CREATE TABLE QuantitativeResults (
@@ -80,6 +82,9 @@ CREATE TABLE QualitativeResults (
     FOREIGN KEY (MethodID) REFERENCES AnalyticalMethods(MethodID),
     FOREIGN KEY (AnalystID) REFERENCES Analysts(AnalystID)
 );
+
+
+
 
 
 -- Insert sample data
@@ -113,7 +118,6 @@ VALUES
 INSERT INTO QualitativeResults (SampleID, MethodID, AnalystID, PassFail, Status, PdfFilePath)
 VALUES 
     (1, 2, 1, TRUE, 'Valid', NULL);  -- Qualitative result for NMR, no PDF yet
-
 
 
 

@@ -1,119 +1,262 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize each tab
-    loadOperators();
+    // Load all data when the page is ready
     loadExperiments();
     loadSamples();
+    loadQuantitativeResults();
+    loadQualitativeResults();
     loadMethods();
+    loadOperators();
     loadAnalysts();
 
-    // Add operator functionality
-    document.getElementById('add-operator-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = document.getElementById('name').value;
-        const contact = document.getElementById('contact').value;
-        addEntry('/add_operator', { name, contact }, loadOperators);
-    });
-
-    // Add experiment functionality
-    document.getElementById('add-experiment-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = document.getElementById('experiment-name').value;
-        const startDate = document.getElementById('start-date').value;
-        const endDate = document.getElementById('end-date').value;
-        const description = document.getElementById('description').value;
-        const operatorId = document.getElementById('operator-id').value;
-        addEntry('/add_experiment', { name, startDate, endDate, description, operatorId }, loadExperiments);
-    });
-
-    // Add sample functionality
-    document.getElementById('add-sample-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-        const experimentId = document.getElementById('sample-experiment-id').value;
-        const name = document.getElementById('sample-name').value;
-        const description = document.getElementById('sample-description').value;
-        const operatorId = document.getElementById('sample-operator-id').value;
-        addEntry('/add_sample', { experimentId, name, description, operatorId }, loadSamples);
-    });
-
-    // Add method functionality
-    document.getElementById('add-method-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = document.getElementById('method-name').value;
-        const description = document.getElementById('method-description').value;
-        addEntry('/add_method', { name, description }, loadMethods);
-    });
-
-    // Add analyst functionality
-    document.getElementById('add-analyst-form').addEventListener('submit', (event) => {
-        event.preventDefault();
-        const name = document.getElementById('analyst-name').value;
-        const contact = document.getElementById('analyst-contact').value;
-        addEntry('/add_analyst', { name, contact }, loadAnalysts);
-    });
-
-    // Search functionality for all tabs
-    setupSearch('search-operators', 'operators-table');
-    setupSearch('search-experiments', 'experiments-table');
-    setupSearch('search-samples', 'samples-table');
-    setupSearch('search-methods', 'methods-table');
-    setupSearch('search-analysts', 'analysts-table');
+    // Log errors if fetch fails
+    function handleFetchError(error, endpoint) {
+        console.error(`Error fetching data from ${endpoint}:`, error);
+        alert(`Failed to load data from ${endpoint}`);
+    }
 });
-
-// Fetch and display operators
-function loadOperators() {
-    fetch('/operators')
-        .then(response => response.json())
-        .then(data => renderTable('operators-table', data.operators, ['OperatorID', 'Name', 'ContactInfo']))
-        .catch(error => console.error('Error loading operators:', error));
-}
 
 // Fetch and display experiments
 function loadExperiments() {
     fetch('/experiments')
-        .then(response => response.json())
-        .then(data => renderTable('experiments-table', data.experiments, ['ExperimentID', 'Name', 'StartDate', 'EndDate', 'Description', 'OperatorID']))
-        .catch(error => console.error('Error loading experiments:', error));
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => renderTable('experiments-table', data.experiments, ['ExperimentID', 'Name', 'StartDate', 'EndDate', 'Description', 'Status', 'OperatorID']))
+        .catch(error => handleFetchError(error, '/experiments'));
 }
-
 
 // Fetch and display samples
 function loadSamples() {
     fetch('/samples')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
         .then(data => renderTable('samples-table', data.samples, ['SampleID', 'ExperimentID', 'Name', 'Description', 'OperatorID']))
-        .catch(error => console.error('Error loading samples:', error));
+        .catch(error => handleFetchError(error, '/samples'));
 }
 
-// Fetch and display methods
+// Fetch and display quantitative results
+function loadQuantitativeResults() {
+    fetch('/quantitative_results')
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => renderTable('quantitative-results-table', data.results, [
+            'TaskID', 'SampleID', 'MethodID', 'AnalystID', 'ResultValue', 'Specification', 'PassFail', 'Status', 'PdfFilePath'
+        ]))
+        .catch(error => handleFetchError(error, '/quantitative_results'));
+}
+
+// Fetch and display qualitative results
+function loadQualitativeResults() {
+    fetch('/qualitative_results')
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => renderTable('qualitative-results-table', data.results, [
+            'TaskID', 'SampleID', 'MethodID', 'AnalystID', 'PassFail', 'Status', 'PdfFilePath'
+        ]))
+        .catch(error => handleFetchError(error, '/qualitative_results'));
+}
+
+// Load methods
 function loadMethods() {
     fetch('/methods')
-        .then(response => response.json())
-        .then(data => renderTable('methods-table', data.methods, ['MethodID', 'Name', 'Description']))
-        .catch(error => console.error('Error loading methods:', error));
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => {
+            renderTable('methods-table', data.methods, ['MethodID', 'Name', 'Description', 'Status']); // Include 'Status'
+        })
+        .catch(error => handleFetchError(error, '/methods'));
+}
+
+
+// Fetch and display operators
+function loadOperators() {
+    fetch('/operators')
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => renderTable('operators-table', data.operators, ['OperatorID', 'Name', 'ContactInfo', 'Status']))
+        .catch(error => handleFetchError(error, '/operators'));
 }
 
 // Fetch and display analysts
 function loadAnalysts() {
     fetch('/analysts')
-        .then(response => response.json())
-        .then(data => renderTable('analysts-table', data.analysts, ['AnalystID', 'Name', 'ContactInfo']))
-        .catch(error => console.error('Error loading analysts:', error));
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
+        })
+        .then(data => renderTable('analysts-table', data.analysts, ['AnalystID', 'Name', 'ContactInfo', 'Status']))
+        .catch(error => handleFetchError(error, '/analysts'));
 }
 
-// Helper to send data to the server
-function addEntry(endpoint, payload, callback) {
-    fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-    })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-            callback(); // Refresh the table
-        })
-        .catch(error => console.error(`Error adding entry to ${endpoint}:`, error));
+// Helper function to render table data
+function renderTable(tableId, data, columns) {
+    const tableBody = document.getElementById(tableId);
+    tableBody.innerHTML = ''; // Clear existing rows
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        columns.forEach(column => {
+            const cell = document.createElement('td');
+            cell.textContent = item[column] || ''; // Fallback for missing data
+            row.appendChild(cell);
+        });
+        tableBody.appendChild(row);
+    });
 }
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Load data on page load
+    loadExperiments();
+    loadSamples();
+    loadQuantitativeResults();
+    loadQualitativeResults();
+    loadMethods();
+    loadOperators();
+    loadAnalysts();
+
+    // Add Experiment
+    document.getElementById('add-experiment-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const experimentData = {
+            name: document.getElementById('experiment-name').value,
+            startDate: document.getElementById('start-date').value,
+            endDate: document.getElementById('end-date').value,
+            description: document.getElementById('description').value,
+            status: document.getElementById('status').value,
+            operatorId: document.getElementById('operator-id').value
+        };
+        await submitForm('/add_experiment', experimentData, loadExperiments, 'Experiment');
+    });
+
+    // Add Sample
+    document.getElementById('add-sample-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const sampleData = {
+            experimentId: document.getElementById('sample-experiment-id').value,
+            name: document.getElementById('sample-name').value,
+            description: document.getElementById('sample-description').value,
+            operatorId: document.getElementById('sample-operator-id').value
+        };
+        await submitForm('/add_sample', sampleData, loadSamples, 'Sample');
+    });
+
+    // Add Quantitative Result
+    document.getElementById('add-quantitative-result-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const resultData = {
+            sampleId: document.getElementById('quant-sample-id').value,
+            methodId: document.getElementById('quant-method-id').value,
+            analystId: document.getElementById('quant-analyst-id').value,
+            resultValue: document.getElementById('quant-result-value').value,
+            specification: document.getElementById('quant-specification').value,
+            passFail: document.getElementById('quant-pass-fail').value,
+            status: document.getElementById('quant-status').value,
+            pdfFilePath: document.getElementById('quant-pdf-path').value
+        };
+        await submitForm('/add_quantitative_result', resultData, loadQuantitativeResults, 'Quantitative Result');
+    });
+
+    // Add Qualitative Result
+    document.getElementById('add-qualitative-result-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const resultData = {
+            sampleId: document.getElementById('qual-sample-id').value,
+            methodId: document.getElementById('qual-method-id').value,
+            analystId: document.getElementById('qual-analyst-id').value,
+            passFail: document.getElementById('qual-pass-fail').value,
+            status: document.getElementById('qual-status').value,
+            pdfFilePath: document.getElementById('qual-pdf-path').value
+        };
+        await submitForm('/add_qualitative_result', resultData, loadQualitativeResults, 'Qualitative Result');
+    });
+
+    // Add Method
+    document.getElementById('add-method-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const methodData = {
+            name: document.getElementById('method-name').value,
+            description: document.getElementById('method-description').value
+        };
+        await submitForm('/add_method', methodData, loadMethods, 'Method');
+    });
+
+    // Add Operator
+    document.getElementById('add-operator-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const operatorData = {
+            name: document.getElementById('operator-name').value,
+            contact: document.getElementById('operator-contact').value,
+            status: document.getElementById('operator-status').value
+        };
+        await submitForm('/add_operator', operatorData, loadOperators, 'Operator');
+    });
+
+    // Add Analyst
+    document.getElementById('add-analyst-form').addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const analystData = {
+            name: document.getElementById('analyst-name').value,
+            contact: document.getElementById('analyst-contact').value,
+            status: document.getElementById('analyst-status').value
+        };
+        await submitForm('/add_analyst', analystData, loadAnalysts, 'Analyst');
+    });
+});
+
+// Helper to submit forms and reload data
+async function submitForm(url, data, reloadCallback, entityName) {
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+        if (response.ok) {
+            alert(`${entityName} added successfully!`);
+            reloadCallback();
+        } else {
+            throw new Error(result.error || `Failed to add ${entityName}`);
+        }
+    } catch (error) {
+        console.error(`Error adding ${entityName}:`, error);
+        alert(`Error adding ${entityName}: ${error.message}`);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Helper to render a table dynamically
 function renderTable(tableId, data, columns) {
