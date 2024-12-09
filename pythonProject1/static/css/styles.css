@@ -167,3 +167,20 @@ body.dark-mode input[type="text"] {
     color: #e0e0e0; /* Light grey text for search */
     border: 1px solid #4c4c4c; /* Border for search input */
 }
+
+
+body.dark-mode input[type="date"] {
+    background-color: #333; /* Background for dark mode */
+    color: #fff; /* Text color for dark mode */
+    border: 1px solid #555; /* Border color for dark mode */
+}
+
+body.dark-mode input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Invert the icon color to fit dark mode */
+}
+
+body.dark-mode input[type="date"]::-webkit-inner-spin-button,
+body.dark-mode input[type="date"]::-webkit-clear-button {
+    filter: invert(1); /* Adjust the spinner and clear button for dark mode */
+}
+
