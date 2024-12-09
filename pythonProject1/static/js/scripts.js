@@ -26,16 +26,25 @@ function loadExperiments() {
         .catch(error => handleFetchError(error, '/experiments'));
 }
 
-// Fetch and display samples
 function loadSamples() {
     fetch('/samples')
         .then(response => {
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             return response.json();
         })
-        .then(data => renderTable('samples-table', data.samples, ['SampleID', 'ExperimentID', 'Name', 'Description', 'OperatorID']))
+        .then(data => {
+            renderTable('samples-table', data.samples, [
+                'SampleID',
+                'ExperimentID',
+                'Name',
+                'Description',
+                'OperatorID',
+                'Status' // Include Status here
+            ]);
+        })
         .catch(error => handleFetchError(error, '/samples'));
 }
+
 
 // Fetch and display quantitative results
 function loadQuantitativeResults() {
@@ -153,35 +162,70 @@ document.addEventListener('DOMContentLoaded', () => {
         await submitForm('/add_sample', sampleData, loadSamples, 'Sample');
     });
 
-    // Add Quantitative Result
-    document.getElementById('add-quantitative-result-form').addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const resultData = {
-            sampleId: document.getElementById('quant-sample-id').value,
-            methodId: document.getElementById('quant-method-id').value,
-            analystId: document.getElementById('quant-analyst-id').value,
-            resultValue: document.getElementById('quant-result-value').value,
-            specification: document.getElementById('quant-specification').value,
-            passFail: document.getElementById('quant-pass-fail').value,
-            status: document.getElementById('quant-status').value,
-            pdfFilePath: document.getElementById('quant-pdf-path').value
-        };
-        await submitForm('/add_quantitative_result', resultData, loadQuantitativeResults, 'Quantitative Result');
-    });
 
-    // Add Qualitative Result
-    document.getElementById('add-qualitative-result-form').addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const resultData = {
-            sampleId: document.getElementById('qual-sample-id').value,
-            methodId: document.getElementById('qual-method-id').value,
-            analystId: document.getElementById('qual-analyst-id').value,
-            passFail: document.getElementById('qual-pass-fail').value,
-            status: document.getElementById('qual-status').value,
-            pdfFilePath: document.getElementById('qual-pdf-path').value
-        };
-        await submitForm('/add_qualitative_result', resultData, loadQualitativeResults, 'Qualitative Result');
-    });
+document.getElementById('add-quantitative-result-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append('sampleId', document.getElementById('quant-sample-id').value);
+    formData.append('methodId', document.getElementById('quant-method-id').value);
+    formData.append('analystId', document.getElementById('quant-analyst-id').value);
+    formData.append('resultValue', document.getElementById('quant-result-value').value);
+    formData.append('specification', document.getElementById('quant-specification').value);
+    formData.append('passFail', document.getElementById('quant-pass-fail').value);
+    formData.append('status', document.getElementById('quant-status').value);
+    formData.append('pdfFile', document.getElementById('quant-pdf-path').files[0]); // Include file
+
+    try {
+        const response = await fetch('/upload_quantitative_result', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Quantitative result added successfully!');
+            loadQuantitativeResults();
+        } else {
+            alert(`Error: ${result.error}`);
+        }
+    } catch (error) {
+        console.error('Error adding quantitative result:', error);
+        alert('Failed to add quantitative result. Check console for details.');
+    }
+});
+
+document.getElementById('add-qualitative-result-form').addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData();
+    formData.append('sampleId', document.getElementById('qual-sample-id').value);
+    formData.append('methodId', document.getElementById('qual-method-id').value);
+    formData.append('analystId', document.getElementById('qual-analyst-id').value);
+    formData.append('passFail', document.getElementById('qual-pass-fail').value);
+    formData.append('status', document.getElementById('qual-status').value);
+    formData.append('pdfFile', document.getElementById('qual-pdf-path').files[0]);
+
+    try {
+        const response = await fetch('/upload_qualitative_result', {
+            method: 'POST',
+            body: formData,
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Qualitative result added successfully!');
+            loadQualitativeResults(); // Reload the results table
+        } else {
+            alert(`Error: ${result.error}`);
+        }
+    } catch (error) {
+        console.error('Error adding qualitative result:', error);
+        alert('Failed to add qualitative result. Check console for details.');
+    }
+});
+
+
 
     // Add Method
     document.getElementById('add-method-form').addEventListener('submit', async (event) => {
@@ -257,8 +301,6 @@ async function submitForm(url, data, reloadCallback, entityName) {
 
 
 
-
-// Helper to render a table dynamically
 function renderTable(tableId, data, columns) {
     const tableBody = document.getElementById(tableId);
     tableBody.innerHTML = ''; // Clear existing rows
@@ -266,12 +308,28 @@ function renderTable(tableId, data, columns) {
         const row = document.createElement('tr');
         columns.forEach(column => {
             const cell = document.createElement('td');
-            cell.textContent = item[column];
+            
+            // If the column is PdfFilePath, create a clickable link
+            if (column === 'PdfFilePath' && item[column]) {
+                const link = document.createElement('a');
+                link.href = item[column]; // Set the link to the file path
+                link.textContent = 'View PDF'; // Text to display
+                link.target = '_blank'; // Open in a new tab
+                cell.appendChild(link);
+            } else {
+                cell.textContent = item[column] || ''; // Fallback for missing data
+            }
+
             row.appendChild(cell);
         });
         tableBody.appendChild(row);
     });
 }
+
+
+
+
+
 
 // Helper to set up search functionality
 function setupSearch(searchInputId, tableId) {

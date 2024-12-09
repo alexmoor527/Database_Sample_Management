@@ -13,7 +13,7 @@
     <header class="py-2 border-bottom">
         <div class="container d-flex justify-content-between align-items-center">
             <h1 class="h5 fw-bold mb-0">Sample Management System</h1>
-            <p class="text-muted small mb-0">Effortlessly manage your lab data using an SQL database made by me</p>
+            <p class="text-muted small mb-0">Manage your lab data with decent effort using an SQL database made by me</p>
             <div>
                 <label class="switch">
                     <input type="checkbox" id="theme-toggle">
@@ -51,6 +51,11 @@
                 <button class="nav-link" id="analysts-tab" data-bs-toggle="tab" data-bs-target="#analysts" type="button" role="tab">Analysts</button>
             </li>
         </ul>
+
+
+
+
+
         <div class="tab-content mt-3">
             <!-- Experiments Tab -->
             <div class="tab-pane fade show active" id="experiments" role="tabpanel">
@@ -105,6 +110,9 @@
                 </form>
             </div>
 
+
+
+
             <!-- Samples Tab -->
             <div class="tab-pane fade" id="samples" role="tabpanel">
                 <h2>Samples</h2>
@@ -117,6 +125,8 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Operator ID</th>
+               		    <th>Status</th> <!-- Added Status column -->
+
                         </tr>
                     </thead>
                     <tbody id="samples-table"></tbody>
@@ -200,16 +210,15 @@
                 <option value="Rejected">Rejected</option>
             </select>
         </div>
-        <div class="col-md-4">
-            <label for="quant-pdf-path" class="form-label">PDF File Path:</label>
-            <input type="text" id="quant-pdf-path" class="form-control">
-        </div>
+<div class="col-md-6">
+    <label for="quant-pdf-path" class="form-label">Upload PDF:</label>
+    <input type="file" id="quant-pdf-path" class="form-control" accept="application/pdf" required>
+</div>
         <div class="col-12 mt-3">
             <button type="submit" class="btn btn-success">Add Quantitative Result</button>
         </div>
     </form>
 </div>
-
 
 <div class="tab-pane fade" id="qualitative-results" role="tabpanel">
     <h2>Qualitative Results</h2>
@@ -257,14 +266,15 @@
             </select>
         </div>
         <div class="col-md-4">
-            <label for="qual-pdf-path" class="form-label">PDF File Path:</label>
-            <input type="text" id="qual-pdf-path" class="form-control">
+            <label for="qual-pdf-path" class="form-label">Upload PDF:</label>
+            <input type="file" id="qual-pdf-path" class="form-control" accept="application/pdf">
         </div>
         <div class="col-12 mt-3">
             <button type="submit" class="btn btn-success">Add Qualitative Result</button>
         </div>
     </form>
 </div>
+
  
 
 <div class="tab-pane fade" id="methods" role="tabpanel">

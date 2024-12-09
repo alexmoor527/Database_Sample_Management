@@ -2,12 +2,18 @@ from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import text
 from flask import request, jsonify
+import os
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
 # Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:0000@localhost/LabDatabase'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# PDF Upload config
+UPLOAD_FOLDER = 'static/uploads'  # Folder to store uploaded PDFs
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
@@ -144,7 +150,6 @@ def add_method():
 
 
 
-
 @app.route('/analysts')
 def get_analysts():
     with db.engine.connect() as connection:
@@ -174,6 +179,88 @@ def add_analyst():
         return jsonify({"error": str(e)}), 500
 
 
+@app.route('/upload_quantitative_result', methods=['POST'])
+def upload_quantitative_result():
+    if 'pdfFile' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+
+    file = request.files['pdfFile']
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    if file and file.filename.endswith('.pdf'):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)  # Save the file
+
+        data = request.form
+        try:
+            # Convert PassFail from dropdown string to boolean
+            pass_fail = data['passFail'].upper() == 'TRUE'
+
+            with db.engine.connect() as connection:
+                transaction = connection.begin()
+                connection.execute(text(
+                    """
+                    INSERT INTO QuantitativeResults (SampleID, MethodID, AnalystID, ResultValue, Specification, PassFail, Status, PdfFilePath)
+                    VALUES (:sampleId, :methodId, :analystId, :resultValue, :specification, :passFail, :status, :pdfFilePath)
+                    """
+                ), {
+                    "sampleId": int(data['sampleId']),
+                    "methodId": int(data['methodId']),
+                    "analystId": int(data['analystId']),
+                    "resultValue": float(data['resultValue']),
+                    "specification": float(data['specification']),
+                    "passFail": pass_fail,  # Convert string to boolean
+                    "status": data['status'],
+                    "pdfFilePath": filepath
+                })
+                transaction.commit()
+            return jsonify({"message": "Quantitative result added successfully!"})
+        except Exception as e:
+            print(f"Error adding quantitative result: {e}")
+            return jsonify({"error": str(e)}), 500
+@app.route('/upload_qualitative_result', methods=['POST'])
+def upload_qualitative_result():
+    if 'pdfFile' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+
+    file = request.files['pdfFile']
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+
+    if file and file.filename.endswith('.pdf'):
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)  # Save the file
+
+        # Convert backslashes to forward slashes for compatibility
+        filepath = filepath.replace("\\", "/")
+
+        data = request.form
+        try:
+            pass_fail = data['passFail'].upper() == 'TRUE'  # Convert to boolean
+            with db.engine.connect() as connection:
+                transaction = connection.begin()
+                connection.execute(text(
+                    """
+                    INSERT INTO QualitativeResults (SampleID, MethodID, AnalystID, PassFail, Status, PdfFilePath)
+                    VALUES (:sampleId, :methodId, :analystId, :passFail, :status, :pdfFilePath)
+                    """
+                ), {
+                    "sampleId": int(data['sampleId']),
+                    "methodId": int(data['methodId']),
+                    "analystId": int(data['analystId']),
+                    "passFail": pass_fail,
+                    "status": data['status'],
+                    "pdfFilePath": filepath
+                })
+                transaction.commit()
+            return jsonify({"message": "Qualitative result added successfully!"})
+        except Exception as e:
+            print(f"Error adding qualitative result: {e}")
+            return jsonify({"error": str(e)}), 500
+
 @app.route('/quantitative_results')
 def get_quantitative_results():
     with db.engine.connect() as connection:
@@ -184,12 +271,30 @@ def get_quantitative_results():
 @app.route('/add_quantitative_result', methods=['POST'])
 def add_quantitative_result():
     data = request.json
-    with db.engine.connect() as connection:
-        connection.execute(text("""
-            INSERT INTO QuantitativeResults (SampleID, MethodID, AnalystID, ResultValue, Specification, PassFail, Status, PdfFilePath)
-            VALUES (:sampleId, :methodId, :analystId, :resultValue, :specification, :passFail, :status, :pdfFilePath)
-        """), data)
-    return jsonify({"message": "Quantitative result added successfully!"})
+    try:
+        with db.engine.connect() as connection:
+            transaction = connection.begin()
+            connection.execute(text(
+                """
+                INSERT INTO QuantitativeResults (SampleID, MethodID, AnalystID, ResultValue, Specification, PassFail, Status, PdfFilePath)
+                VALUES (:sampleId, :methodId, :analystId, :resultValue, :specification, :passFail, :status, :pdf_file_path)
+                """
+            ), {
+                "sampleId": data['sampleId'],
+                "methodId": data['methodId'],
+                "analystId": data['analystId'],
+                "resultValue": data['resultValue'],
+                "specification": data['specification'],
+                "passFail": data['passFail'],
+                "status": data.get('status', 'Valid'),
+                "pdf_file_path": data.get('pdfFilePath') or None  # Allow NULL
+            })
+            transaction.commit()
+        return jsonify({"message": "Quantitative result added successfully!"})
+    except Exception as e:
+        print(f"Error adding quantitative result: {e}")
+        return jsonify({"error": str(e)}), 500
+
 
 @app.route('/qualitative_results')
 def get_qualitative_results():
@@ -201,12 +306,28 @@ def get_qualitative_results():
 @app.route('/add_qualitative_result', methods=['POST'])
 def add_qualitative_result():
     data = request.json
-    with db.engine.connect() as connection:
-        connection.execute(text("""
-            INSERT INTO QualitativeResults (SampleID, MethodID, AnalystID, PassFail, Status, PdfFilePath)
-            VALUES (:sampleId, :methodId, :analystId, :passFail, :status, :pdfFilePath)
-        """), data)
-    return jsonify({"message": "Qualitative result added successfully!"})
+    try:
+        with db.engine.connect() as connection:
+            transaction = connection.begin()
+            connection.execute(text(
+                """
+                INSERT INTO QualitativeResults (SampleID, MethodID, AnalystID, PassFail, Status, PdfFilePath)
+                VALUES (:sampleId, :methodId, :analystId, :passFail, :status, :pdf_file_path)
+                """
+            ), {
+                "sampleId": data['sampleId'],
+                "methodId": data['methodId'],
+                "analystId": data['analystId'],
+                "passFail": data['passFail'],
+                "status": data.get('status', 'Valid'),
+                "pdf_file_path": data.get('pdfFilePath') or None  # Allow NULL
+            })
+            transaction.commit()
+        return jsonify({"message": "Qualitative result added successfully!"})
+    except Exception as e:
+        print(f"Error adding qualitative result: {e}")
+        return jsonify({"error": str(e)}), 500
+
 
 
 if __name__ == '__main__':
