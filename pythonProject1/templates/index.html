@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
     <header class="py-2 border-bottom">
         <div class="container d-flex justify-content-between align-items-center">
             <h1 class="h5 fw-bold mb-0">Sample Management System</h1>
-            <p class="text-muted small mb-0">Effortlessly manage your lab data using an SQL database made by me</p>
+            <p class="text-muted small mb-0">Manage your lab data with decent effort using an SQL database made by me</p>
             <div>
                 <label class="switch">
                     <input type="checkbox" id="theme-toggle">
@@ -25,61 +26,39 @@
             </div>
         </div>
     </header>
-
-
     <main class="container mt-4">
         <!-- Tabs Navigation -->
-<ul class="nav nav-tabs" id="databaseTabs" role="tablist">
-    <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="experiments-tab" data-bs-toggle="tab" data-bs-target="#experiments" type="button" role="tab">Experiments</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="samples-tab" data-bs-toggle="tab" data-bs-target="#samples" type="button" role="tab">Samples</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="operators-tab" data-bs-toggle="tab" data-bs-target="#operators" type="button" role="tab">Operators</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="analysts-tab" data-bs-toggle="tab" data-bs-target="#analysts" type="button" role="tab">Analysts</button>
-    </li>
-    <li class="nav-item" role="presentation">
-        <button class="nav-link" id="methods-tab" data-bs-toggle="tab" data-bs-target="#methods" type="button" role="tab">Methods</button>
-    </li>
-</ul>
-        <!-- Tabs Content -->
-        <div class="tab-content mt-3">
-            <!-- Operators -->
-            <div class="tab-pane fade show active" id="operators" role="tabpanel">
-                <h2>Operators</h2>
-                <input type="text" id="search-operators" class="form-control mb-3" placeholder="Search Operators...">
-                <table class="table table-striped table-hover">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>ID</th>
-                            <th>Name</th>
-                            <th>Contact Info</th>
-                        </tr>
-                    </thead>
-                    <tbody id="operators-table"></tbody>
-                </table>
-                <h3>Add Operator</h3>
-                <form id="add-operator-form" class="row g-3">
-                    <div class="col-md-6">
-                        <label for="name" class="form-label">Name:</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="contact" class="form-label">Contact Info:</label>
-                        <input type="text" id="contact" class="form-control" required>
-                    </div>
-                    <div class="col-12 mt-3">
-                        <button type="submit" class="btn btn-success">Add Operator</button>
-                    </div>
-                </form>
-            </div>
+        <ul class="nav nav-tabs" id="databaseTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="experiments-tab" data-bs-toggle="tab" data-bs-target="#experiments" type="button" role="tab">Experiments</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="samples-tab" data-bs-toggle="tab" data-bs-target="#samples" type="button" role="tab">Samples</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="quantitative-results-tab" data-bs-toggle="tab" data-bs-target="#quantitative-results" type="button" role="tab">Quantitative Results</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="qualitative-results-tab" data-bs-toggle="tab" data-bs-target="#qualitative-results" type="button" role="tab">Qualitative Results</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="methods-tab" data-bs-toggle="tab" data-bs-target="#methods" type="button" role="tab">Methods</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="operators-tab" data-bs-toggle="tab" data-bs-target="#operators" type="button" role="tab">Operators</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="analysts-tab" data-bs-toggle="tab" data-bs-target="#analysts" type="button" role="tab">Analysts</button>
+            </li>
+        </ul>
 
-            <!-- Experiments -->
-            <div class="tab-pane fade" id="experiments" role="tabpanel">
+
+
+
+
+        <div class="tab-content mt-3">
+            <!-- Experiments Tab -->
+            <div class="tab-pane fade show active" id="experiments" role="tabpanel">
                 <h2>Experiments</h2>
                 <input type="text" id="search-experiments" class="form-control mb-3" placeholder="Search Experiments...">
                 <table class="table table-striped table-hover">
@@ -90,6 +69,7 @@
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Description</th>
+                            <th>Status</th>
                             <th>Operator ID</th>
                         </tr>
                     </thead>
@@ -107,11 +87,20 @@
                     </div>
                     <div class="col-md-6">
                         <label for="end-date" class="form-label">End Date:</label>
-                        <input type="date" id="end-date" class="form-control" required>
+                        <input type="date" id="end-date" class="form-control">
                     </div>
                     <div class="col-md-12">
                         <label for="description" class="form-label">Description:</label>
                         <textarea id="description" class="form-control" required></textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="status" class="form-label">Status:</label>
+                        <select id="status" class="form-select">
+    <option value="Planned">Planned</option>
+    <option value="Ongoing">Ongoing</option>
+    <option value="Finished">Finished</option>
+    <option value="Cancelled">Cancelled</option>
+                        </select>
                     </div>
                     <div class="col-md-6">
                         <label for="operator-id" class="form-label">Operator ID:</label>
@@ -123,7 +112,10 @@
                 </form>
             </div>
 
-            <!-- Samples -->
+
+
+
+            <!-- Samples Tab -->
             <div class="tab-pane fade" id="samples" role="tabpanel">
                 <h2>Samples</h2>
                 <input type="text" id="search-samples" class="form-control mb-3" placeholder="Search Samples...">
@@ -135,6 +127,8 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>Operator ID</th>
+               		    <th>Status</th> <!-- Added Status column -->
+
                         </tr>
                     </thead>
                     <tbody id="samples-table"></tbody>
@@ -163,9 +157,128 @@
                 </form>
             </div>
 
+<div class="tab-pane fade" id="quantitative-results" role="tabpanel">
+    <h2>Quantitative Results</h2>
+    <input type="text" id="search-quantitative-results" class="form-control mb-3" placeholder="Search Quantitative Results...">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Task ID</th>
+                <th>Sample ID</th>
+                <th>Method ID</th>
+                <th>Analyst ID</th>
+                <th>Result Value</th>
+                <th>Specification</th>
+                <th>Pass/Fail</th>
+                <th>Status</th>
+                <th>PDF File Path</th>
+            </tr>
+        </thead>
+        <tbody id="quantitative-results-table"></tbody>
+    </table>
+    <h3>Add Quantitative Result</h3>
+    <form id="add-quantitative-result-form" class="row g-3">
+        <div class="col-md-4">
+            <label for="quant-sample-id" class="form-label">Sample ID:</label>
+            <input type="number" id="quant-sample-id" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+            <label for="quant-method-id" class="form-label">Method ID:</label>
+            <input type="number" id="quant-method-id" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+            <label for="quant-analyst-id" class="form-label">Analyst ID:</label>
+            <input type="number" id="quant-analyst-id" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+            <label for="quant-result-value" class="form-label">Result Value:</label>
+            <input type="number" step="0.01" id="quant-result-value" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+            <label for="quant-specification" class="form-label">Specification:</label>
+            <input type="number" step="0.01" id="quant-specification" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+            <label for="quant-pass-fail" class="form-label">Pass/Fail:</label>
+            <select id="quant-pass-fail" class="form-select">
+                <option value="TRUE">Pass</option>
+                <option value="FALSE">Fail</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="quant-status" class="form-label">Status:</label>
+            <select id="quant-status" class="form-select">
+                <option value="Valid">Valid</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+        </div>
+<div class="col-md-6">
+    <label for="quant-pdf-path" class="form-label">Upload PDF:</label>
+    <input type="file" id="quant-pdf-path" class="form-control" accept="application/pdf" required>
+</div>
+        <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-success">Add Quantitative Result</button>
+        </div>
+    </form>
+</div>
 
+<div class="tab-pane fade" id="qualitative-results" role="tabpanel">
+    <h2>Qualitative Results</h2>
+    <input type="text" id="search-qualitative-results" class="form-control mb-3" placeholder="Search Qualitative Results...">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Task ID</th>
+                <th>Sample ID</th>
+                <th>Method ID</th>
+                <th>Analyst ID</th>
+                <th>Pass/Fail</th>
+                <th>Status</th>
+                <th>PDF File Path</th>
+            </tr>
+        </thead>
+        <tbody id="qualitative-results-table"></tbody>
+    </table>
+    <h3>Add Qualitative Result</h3>
+    <form id="add-qualitative-result-form" class="row g-3">
+        <div class="col-md-4">
+            <label for="qual-sample-id" class="form-label">Sample ID:</label>
+            <input type="number" id="qual-sample-id" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+            <label for="qual-method-id" class="form-label">Method ID:</label>
+            <input type="number" id="qual-method-id" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+            <label for="qual-analyst-id" class="form-label">Analyst ID:</label>
+            <input type="number" id="qual-analyst-id" class="form-control" required>
+        </div>
+        <div class="col-md-4">
+            <label for="qual-pass-fail" class="form-label">Pass/Fail:</label>
+            <select id="qual-pass-fail" class="form-select">
+                <option value="TRUE">Pass</option>
+                <option value="FALSE">Fail</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="qual-status" class="form-label">Status:</label>
+            <select id="qual-status" class="form-select">
+                <option value="Valid">Valid</option>
+                <option value="Rejected">Rejected</option>
+            </select>
+        </div>
+        <div class="col-md-4">
+            <label for="qual-pdf-path" class="form-label">Upload PDF:</label>
+            <input type="file" id="qual-pdf-path" class="form-control" accept="application/pdf">
+        </div>
+        <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-success">Add Qualitative Result</button>
+        </div>
+    </form>
+</div>
 
-<!-- Methods -->
+ 
+
 <div class="tab-pane fade" id="methods" role="tabpanel">
     <h2>Methods</h2>
     <input type="text" id="search-methods" class="form-control mb-3" placeholder="Search Methods...">
@@ -175,6 +288,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody id="methods-table"></tbody>
@@ -196,9 +310,47 @@
 </div>
 
 
-<!-- Analysts -->
+
+<div class="tab-pane fade" id="operators" role="tabpanel">
+    <h2>Operators</h2>
+    <input type="text" id="search-operators" class="form-control mb-3" placeholder="Search Operators...">
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Contact Info</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="operators-table"></tbody>
+    </table>
+    <h3>Add Operator</h3>
+    <form id="add-operator-form" class="row g-3">
+        <div class="col-md-6">
+            <label for="operator-name" class="form-label">Name:</label>
+            <input type="text" id="operator-name" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label for="operator-contact" class="form-label">Contact Info:</label>
+            <input type="text" id="operator-contact" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+            <label for="operator-status" class="form-label">Status:</label>
+            <select id="operator-status" class="form-select">
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
+        <div class="col-12 mt-3">
+            <button type="submit" class="btn btn-success">Add Operator</button>
+        </div>
+    </form>
+</div>
+
+
 <div class="tab-pane fade" id="analysts" role="tabpanel">
-    <h2 class="mt-3">Analysts</h2>
+    <h2>Analysts</h2>
     <input type="text" id="search-analysts" class="form-control mb-3" placeholder="Search Analysts...">
     <table class="table table-striped table-hover">
         <thead class="table-dark">
@@ -206,6 +358,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Contact Info</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody id="analysts-table"></tbody>
@@ -220,6 +373,13 @@
             <label for="analyst-contact" class="form-label">Contact Info:</label>
             <input type="text" id="analyst-contact" class="form-control" required>
         </div>
+        <div class="col-md-6">
+            <label for="analyst-status" class="form-label">Status:</label>
+            <select id="analyst-status" class="form-control">
+                <option value="Active" selected>Active</option>
+                <option value="Inactive">Inactive</option>
+            </select>
+        </div>
         <div class="col-12 mt-3">
             <button type="submit" class="btn btn-success">Add Analyst</button>
         </div>
@@ -227,15 +387,19 @@
 </div>
 
 
+
+
+
+
 </div>
 
 
 
 
+    </main>
     <footer class="bg-dark text-white text-center py-3 mt-4">
         <p>&copy; 2024 Sample Management System</p>
     </footer>
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
