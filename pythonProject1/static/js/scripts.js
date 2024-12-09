@@ -13,7 +13,17 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error(`Error fetching data from ${endpoint}:`, error);
         alert(`Failed to load data from ${endpoint}`);
     }
+
+    // Setup search bars for all tables
+    setupSearch('search-experiments', 'experiments-table');
+    setupSearch('search-samples', 'samples-table');
+    setupSearch('search-quantitative-results', 'quantitative-results-table');
+    setupSearch('search-qualitative-results', 'qualitative-results-table');
+    setupSearch('search-methods', 'methods-table');
+    setupSearch('search-operators', 'operators-table');
+    setupSearch('search-analysts', 'analysts-table');
 });
+
 
 // Fetch and display experiments
 function loadExperiments() {
