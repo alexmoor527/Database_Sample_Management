@@ -398,5 +398,35 @@ def update_status(table):
 
 
 
+@app.route('/api/<table_name>', methods=['GET'])
+def get_table_data(table_name):
+    """
+    Generic REST API endpoint for fetching data from any table.
+    """
+    table_mapping = {
+        "experiments": "Experiments",
+        "samples": "Samples",
+        "methods": "AnalyticalMethods",
+        "quantitative-results": "QuantitativeResults",
+        "qualitative-results": "QualitativeResults",
+        "operators": "Operators",
+        "analysts": "Analysts"
+    }
+
+    # Validate the table name
+    if table_name not in table_mapping:
+        return jsonify({"error": f"Invalid table: {table_name}"}), 400
+
+    try:
+        # Fetch the data dynamically
+        with db.engine.connect() as connection:
+            result = connection.execute(text(f"SELECT * FROM {table_mapping[table_name]}"))
+            table_data = [dict(row._mapping) for row in result]  # Ensure correct row-to-dict conversion
+        return jsonify(table_data)
+    except Exception as e:
+        print(f"Error fetching data for {table_name}: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
 if __name__ == '__main__':
     app.run(debug=True)
