@@ -118,10 +118,16 @@ def add_sample():
 
 @app.route('/methods')
 def get_methods():
-    with db.engine.connect() as connection:
-        result = connection.execute(text("SELECT * FROM AnalyticalMethods"))
-        methods = [dict(zip(result.keys(), row)) for row in result]
-    return {"methods": methods}
+    try:
+        with db.engine.connect() as connection:
+            result = connection.execute(text("SELECT * FROM AnalyticalMethods"))
+            methods = [dict(zip(result.keys(), row)) for row in result]
+        return {"methods": methods}  # Ensure JSON format is returned
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+
 
 
 @app.route('/add_method', methods=['POST'])
@@ -261,12 +267,19 @@ def upload_qualitative_result():
             print(f"Error adding qualitative result: {e}")
             return jsonify({"error": str(e)}), 500
 
+
 @app.route('/quantitative_results')
 def get_quantitative_results():
-    with db.engine.connect() as connection:
-        result = connection.execute(text("SELECT * FROM QuantitativeResults"))
-        results = [dict(zip(result.keys(), row)) for row in result]
-    return {"results": results}
+    try:
+        with db.engine.connect() as connection:
+            result = connection.execute(text("SELECT * FROM QuantitativeResults"))
+            results = [dict(zip(result.keys(), row)) for row in result]
+        return {"results": results}
+    except Exception as e:
+        print(f"Error fetching quantitative results: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
 
 @app.route('/add_quantitative_result', methods=['POST'])
 def add_quantitative_result():
@@ -298,10 +311,15 @@ def add_quantitative_result():
 
 @app.route('/qualitative_results')
 def get_qualitative_results():
-    with db.engine.connect() as connection:
-        result = connection.execute(text("SELECT * FROM QualitativeResults"))
-        results = [dict(zip(result.keys(), row)) for row in result]
-    return {"results": results}
+    try:
+        with db.engine.connect() as connection:
+            result = connection.execute(text("SELECT * FROM QualitativeResults"))
+            results = [dict(zip(result.keys(), row)) for row in result]
+        return {"results": results}
+    except Exception as e:
+        print(f"Error fetching qualitative results: {e}")
+        return jsonify({"error": str(e)}), 500
+
 
 @app.route('/add_qualitative_result', methods=['POST'])
 def add_qualitative_result():
@@ -327,6 +345,48 @@ def add_qualitative_result():
     except Exception as e:
         print(f"Error adding qualitative result: {e}")
         return jsonify({"error": str(e)}), 500
+
+
+@app.route('/api/update_<table>_status', methods=['POST'])
+def update_status(table):
+    data = request.json
+    print(f"Received data for update: {data}")
+
+    table_mapping = {
+        'experiments': 'ExperimentID',
+        'samples': 'SampleID',
+        'analyticalmethods': 'MethodID',
+        'quantitativeresults': 'TaskID',
+        'qualitativeresults': 'TaskID',
+        'operators': 'OperatorID',
+        'analysts': 'AnalystID'
+    }
+
+    id_field = table_mapping.get(table.lower())
+    if not id_field:
+        print(f"Invalid table specified: {table}")
+        return jsonify({"error": "Invalid table"}), 400
+
+    id_value = data.get('id')
+    status = data.get('status')
+
+    if not id_value or not status:
+        print(f"Missing required fields: id={id_value}, status={status}")
+        return jsonify({"error": "Invalid data"}), 400
+
+    try:
+        with db.engine.connect() as connection:
+            transaction = connection.begin()  # Start a transaction
+            query = f"UPDATE {table.capitalize()} SET Status = :status WHERE {id_field} = :id_value"
+            print(f"Executing query: {query} with params: status={status}, id_value={id_value}")
+            connection.execute(text(query), {"status": status, "id_value": id_value})
+            transaction.commit()  # Commit the transaction
+        return jsonify({"message": "Status updated successfully!"})
+    except Exception as e:
+        print(f"Error updating status for table={table}: {e}")
+        return jsonify({"error": str(e)}), 500
+
+
 
 
 
