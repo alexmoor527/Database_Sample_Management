@@ -118,21 +118,6 @@ function loadAnalysts() {
         .catch(error => handleFetchError(error, '/analysts'));
 }
 
-// Helper function to render table data
-function renderTable(tableId, data, columns) {
-    const tableBody = document.getElementById(tableId);
-    tableBody.innerHTML = ''; // Clear existing rows
-    data.forEach(item => {
-        const row = document.createElement('tr');
-        columns.forEach(column => {
-            const cell = document.createElement('td');
-            cell.textContent = item[column] || ''; // Fallback for missing data
-            row.appendChild(cell);
-        });
-        tableBody.appendChild(row);
-    });
-}
-
 
 
 
@@ -292,49 +277,118 @@ async function submitForm(url, data, reloadCallback, entityName) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Function to render the table with dropdown and PDF handling
 function renderTable(tableId, data, columns) {
     const tableBody = document.getElementById(tableId);
-    tableBody.innerHTML = ''; // Clear existing rows
+    tableBody.innerHTML = '';
+
+    const validOptions = {
+        experiments: ['Planned', 'Ongoing', 'Finished', 'Cancelled'],
+        samples: ['Valid', 'Rejected'],
+        methods: ['Active', 'Inactive'], // Fixed to match the tableKey
+        'quantitative-results': ['Valid', 'Rejected'],
+        'qualitative-results': ['Valid', 'Rejected'],
+        operators: ['Active', 'Inactive'],
+        analysts: ['Active', 'Inactive']
+    };
+
+    const idFieldMapping = {
+        experiments: 'ExperimentID',
+        samples: 'SampleID',
+        methods: 'MethodID', // Fixed to match the tableKey
+        'quantitative-results': 'TaskID',
+        'qualitative-results': 'TaskID',
+        operators: 'OperatorID',
+        analysts: 'AnalystID'
+    };
+
+    const tableKey = tableId.replace('-table', '').toLowerCase();
+    const idField = idFieldMapping[tableKey];
+
+    console.log(`Table Key Debug: tableKey=${tableKey}`);
+
     data.forEach(item => {
         const row = document.createElement('tr');
+
         columns.forEach(column => {
             const cell = document.createElement('td');
-            
-            // If the column is PdfFilePath, create a clickable link
+
             if (column === 'PdfFilePath' && item[column]) {
                 const link = document.createElement('a');
-                link.href = item[column]; // Set the link to the file path
-                link.textContent = 'View PDF'; // Text to display
-                link.target = '_blank'; // Open in a new tab
+                link.href = item[column].replace('\\', '/'); // Ensure proper path formatting
+                link.textContent = 'View PDF';
+                link.target = '_blank';
                 cell.appendChild(link);
+            } else if (column === 'Status') {
+                const dropdown = document.createElement('select');
+                const statuses = validOptions[tableKey] || [];
+
+                console.log(`Dropdown setup for ${tableKey}: statuses=${statuses.join(', ')}, status=${item[column]}`);
+
+                if (!statuses.length) {
+                    console.error(`No valid options found for ${tableKey}`);
+                    return; // Skip rendering the dropdown if no options are available
+                }
+
+                statuses.forEach(status => {
+                    const option = document.createElement('option');
+                    option.value = status;
+                    option.textContent = status;
+                    option.selected = item[column] === status;
+                    dropdown.appendChild(option);
+                });
+
+                const idValue = item[idField];
+                dropdown.dataset.id = idValue;
+                dropdown.dataset.tableKey = tableKey;
+
+                console.log(`Dropdown setup for ${tableKey}: id=${idValue}, status=${item[column]}`);
+
+                dropdown.addEventListener('change', async (event) => {
+                    const newStatus = event.target.value;
+                    const id = event.target.dataset.id;
+                    const table = event.target.dataset.tableKey;
+
+                    console.log("Updating status for:", { id, table, newStatus });
+
+                    if (!id || id === 'undefined') {
+                        alert("Failed to identify the record for updating status.");
+                        return;
+                    }
+
+                    try {
+                        const response = await fetch(`/api/update_${table}_status`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ id, status: newStatus })
+                        });
+
+                        if (response.ok) {
+                            alert(`Status updated to ${newStatus}`);
+                        } else {
+                            const error = await response.json();
+                            console.error("Failed to update status:", error.error);
+                            alert("Failed to update status.");
+                        }
+                    } catch (error) {
+                        console.error("Error updating status:", error);
+                        alert("Error updating status.");
+                    }
+                });
+
+                cell.appendChild(dropdown);
             } else {
-                cell.textContent = item[column] || ''; // Fallback for missing data
+                cell.textContent = item[column] || '';
             }
 
             row.appendChild(cell);
         });
+
         tableBody.appendChild(row);
     });
 }
+
+
 
 
 
