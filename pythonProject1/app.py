@@ -118,13 +118,10 @@ def add_sample():
 
 @app.route('/methods')
 def get_methods():
-    try:
-        with db.engine.connect() as connection:
-            result = connection.execute(text("SELECT * FROM AnalyticalMethods"))
-            methods = [dict(zip(result.keys(), row)) for row in result]
-        return {"methods": methods}  # Ensure JSON format is returned
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    with db.engine.connect() as connection:
+        result = connection.execute(text("SELECT * FROM AnalyticalMethods"))
+        methods = [dict(zip(result.keys(), row)) for row in result]
+    return {"methods": methods}
 
 
 
@@ -353,17 +350,29 @@ def update_status(table):
     print(f"Received data for update: {data}")
 
     table_mapping = {
+        'experiments': 'Experiments',
+        'samples': 'Samples',
+        'methods': 'AnalyticalMethods',  # Keep this one
+        'quantitative-results': 'QuantitativeResults',
+        'qualitative-results': 'QualitativeResults',
+        'operators': 'Operators',
+        'analysts': 'Analysts'
+    }
+
+    id_field_mapping = {
         'experiments': 'ExperimentID',
         'samples': 'SampleID',
-        'analyticalmethods': 'MethodID',
-        'quantitativeresults': 'TaskID',
-        'qualitativeresults': 'TaskID',
+        'methods': 'MethodID',  # Fix here to align with 'methods'
+        'quantitative-results': 'TaskID',
+        'qualitative-results': 'TaskID',
         'operators': 'OperatorID',
         'analysts': 'AnalystID'
     }
 
-    id_field = table_mapping.get(table.lower())
-    if not id_field:
+    table_name = table_mapping.get(table)
+    id_field = id_field_mapping.get(table)
+
+    if not table_name or not id_field:
         print(f"Invalid table specified: {table}")
         return jsonify({"error": "Invalid table"}), 400
 
@@ -377,7 +386,7 @@ def update_status(table):
     try:
         with db.engine.connect() as connection:
             transaction = connection.begin()  # Start a transaction
-            query = f"UPDATE {table.capitalize()} SET Status = :status WHERE {id_field} = :id_value"
+            query = f"UPDATE {table_name} SET Status = :status WHERE {id_field} = :id_value"
             print(f"Executing query: {query} with params: status={status}, id_value={id_value}")
             connection.execute(text(query), {"status": status, "id_value": id_value})
             transaction.commit()  # Commit the transaction
@@ -385,7 +394,6 @@ def update_status(table):
     except Exception as e:
         print(f"Error updating status for table={table}: {e}")
         return jsonify({"error": str(e)}), 500
-
 
 
 
