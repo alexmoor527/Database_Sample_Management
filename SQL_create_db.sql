@@ -99,7 +99,7 @@ VALUES
 INSERT INTO Samples (ExperimentID, Name, Description, OperatorID, Status)
 VALUES 
     (1, 'Starting material', 'Organic compound for HPLC purity test', 1, 'Valid'),
-    (1, 'Starting material 2', 'Chemical for NMR assay', 1, 'Valid');
+    (1, 'Starting material 2', 'Reagent for NMR assay', 1, 'Valid');
 
 INSERT INTO AnalyticalMethods (Name, Description, Status)
 VALUES 
