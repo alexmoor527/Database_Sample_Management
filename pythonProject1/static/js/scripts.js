@@ -475,3 +475,74 @@ if (prefersDarkMode) {
 
 
 
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Load Google Charts library
+    google.charts.load('current', { packages: ['corechart'] });
+
+    // Initialize the charts once the library is ready
+    google.charts.setOnLoadCallback(drawCharts);
+
+    async function drawCharts() {
+        try {
+            // Fetch data from existing APIs
+            const quantitativeData = await fetch('/quantitative_results').then(res => res.json());
+            const qualitativeData = await fetch('/qualitative_results').then(res => res.json());
+            const experimentsData = await fetch('/experiments').then(res => res.json());
+
+            // Prepare data for charts
+            const quantitativeChartData = transformPassFailData(quantitativeData.results, 'PassFail');
+            const qualitativeChartData = transformPassFailData(qualitativeData.results, 'PassFail');
+            const experimentStatusData = transformExperimentStatusData(experimentsData.experiments);
+
+            // Draw the charts
+            drawPieChart('quantitative-chart', 'Quantitative Results Pass/Fail Ratio', quantitativeChartData);
+            drawPieChart('qualitative-chart', 'Qualitative Results Pass/Fail Ratio', qualitativeChartData);
+            drawPieChart('experiment-status-chart', 'Experiments by Status', experimentStatusData);
+        } catch (error) {
+            console.error('Error loading chart data:', error);
+        }
+    }
+
+    // Helper to transform pass/fail data
+    function transformPassFailData(data, field) {
+        const counts = data.reduce(
+            (acc, item) => {
+                if (item[field] === 1) acc.Pass++; // 1 indicates Pass
+                else if (item[field] === 0) acc.Fail++; // 0 indicates Fail
+                return acc;
+            },
+            { Pass: 0, Fail: 0 }
+        );
+        return [['Result', 'Count'], ['Pass', counts.Pass], ['Fail', counts.Fail]];
+    }
+
+
+    // Helper to transform experiment status data
+    function transformExperimentStatusData(data) {
+        const counts = data.reduce((acc, item) => {
+            acc[item.Status] = (acc[item.Status] || 0) + 1;
+            return acc;
+        }, {});
+        return [['Status', 'Count'], ...Object.entries(counts)];
+    }
+
+    // Helper to draw a pie chart
+    function drawPieChart(elementId, title, data) {
+        const chartData = google.visualization.arrayToDataTable(data);
+        const options = {
+            title: title,
+            is3D: true
+        };
+        const chart = new google.visualization.PieChart(document.getElementById(elementId));
+        chart.draw(chartData, options);
+    }
+});
+
+
+
+
