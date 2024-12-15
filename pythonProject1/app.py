@@ -125,8 +125,6 @@ def get_methods():
 
 
 
-
-
 @app.route('/add_method', methods=['POST'])
 def add_method():
     data = request.json
@@ -391,7 +389,6 @@ def update_status(table):
     except Exception as e:
         print(f"Error updating status for table={table}: {e}")
         return jsonify({"error": str(e)}), 500
-
 
 
 

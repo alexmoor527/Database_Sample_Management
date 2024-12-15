@@ -221,7 +221,6 @@ document.getElementById('add-qualitative-result-form').addEventListener('submit'
 });
 
 
-
     // Add Method
     document.getElementById('add-method-form').addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -421,8 +420,6 @@ document.getElementById('theme-toggle').addEventListener('change', (event) => {
 });
 
 
-
-
 // Australian Mode
 let currentDegrees = 0; // Track the current rotation angle
 let targetDegrees = 0; // The target rotation angle
@@ -456,8 +453,6 @@ document.getElementById('australian-mode').addEventListener('change', (event) =>
 });
 
 
-
-
 // Detect the system's theme preference (light or dark)
 const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -476,12 +471,6 @@ themeToggleCheckbox.addEventListener('change', (event) => {
 if (prefersDarkMode) {
     document.body.classList.add('dark-mode');
 }
-
-
-
-
-
-
 
 
 
@@ -548,7 +537,4 @@ document.addEventListener('DOMContentLoaded', () => {
         chart.draw(chartData, options);
     }
 });
-
-
-
 
