@@ -319,6 +319,13 @@ function renderTable(tableId, data, columns) {
                 link.textContent = 'View PDF';
                 link.target = '_blank';
                 cell.appendChild(link);
+            }
+
+            else if (column === 'PassFail') {
+                cell.textContent = item[column] === true || item[column] === 1 ? 'Pass' : 'Fail';
+            
+
+
             } else if (column === 'Status') {
                 const dropdown = document.createElement('select');
                 const statuses = validOptions[tableKey] || [];
