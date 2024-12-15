@@ -237,11 +237,11 @@ document.getElementById('add-qualitative-result-form').addEventListener('submit'
         event.preventDefault();
         const operatorData = {
             name: document.getElementById('operator-name').value,
-            contact: document.getElementById('operator-contact').value,
-            status: document.getElementById('operator-status').value
+            contact: document.getElementById('operator-contact').value
         };
         await submitForm('/add_operator', operatorData, loadOperators, 'Operator');
     });
+
 
     // Add Analyst
     document.getElementById('add-analyst-form').addEventListener('submit', async (event) => {
@@ -249,7 +249,6 @@ document.getElementById('add-qualitative-result-form').addEventListener('submit'
         const analystData = {
             name: document.getElementById('analyst-name').value,
             contact: document.getElementById('analyst-contact').value,
-            status: document.getElementById('analyst-status').value
         };
         await submitForm('/add_analyst', analystData, loadAnalysts, 'Analyst');
     });
@@ -323,7 +322,7 @@ function renderTable(tableId, data, columns) {
 
             else if (column === 'PassFail') {
                 cell.textContent = item[column] === true || item[column] === 1 ? 'Pass' : 'Fail';
-            
+
 
 
             } else if (column === 'Status') {

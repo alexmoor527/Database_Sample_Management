@@ -37,10 +37,10 @@ def add_operator():
     data = request.json
     try:
         with db.engine.connect() as connection:
-            transaction = connection.begin()  # Start transaction
+            transaction = connection.begin()  # Start a transaction
             connection.execute(
                 text("INSERT INTO Operators (Name, ContactInfo, Status) VALUES (:name, :contact, :status)"),
-                {"name": data['name'], "contact": data['contact'], "status": data['status']}
+                {"name": data['name'], "contact": data['contact'], "status": data.get('status', 'Active')}  # Default to 'Active'
             )
             transaction.commit()  # Commit transaction
         return jsonify({"message": "Operator added successfully!"})
@@ -165,20 +165,17 @@ def get_analysts():
 @app.route('/add_analyst', methods=['POST'])
 def add_analyst():
     data = request.json
-    name = data.get('name')
-    contact = data.get('contact')
-    status = data.get('status', 'Active')  # Default to 'Active' if not provided
-
     try:
         with db.engine.connect() as connection:
             transaction = connection.begin()  # Start a transaction
             connection.execute(
                 text("INSERT INTO Analysts (Name, ContactInfo, Status) VALUES (:name, :contact, :status)"),
-                {"name": name, "contact": contact, "status": status}
+                {"name": data['name'], "contact": data['contact'], "status": data.get('status', 'Active')}  # Default to 'Active'
             )
-            transaction.commit()  # Commit the transaction
+            transaction.commit()  # Commit transaction
         return jsonify({"message": "Analyst added successfully!"})
     except Exception as e:
+        print(f"Error adding analyst: {e}")
         return jsonify({"error": str(e)}), 500
 
 
