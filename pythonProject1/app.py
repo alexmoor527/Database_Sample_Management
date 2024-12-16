@@ -1,3 +1,20 @@
+import logging
+from logging.handlers import TimedRotatingFileHandler
+from flask import Flask, request, jsonify
+
+# Configure logging
+log_handler = TimedRotatingFileHandler('logs/audit.log', when='H', interval=1, backupCount=24)
+log_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+log_handler.setFormatter(log_formatter)
+
+logger = logging.getLogger('AuditLogger')
+logger.setLevel(logging.INFO)
+logger.addHandler(log_handler)
+
+
+
+
+
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import text
@@ -17,6 +34,31 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
+
+
+
+
+# Logging
+@app.before_request
+def log_request_info():
+    logger.info(f"Request: {request.method} {request.path}")
+    if request.method == 'POST':
+        logger.info(f"Data: {request.json}")
+
+@app.after_request
+def log_response_info(response):
+    logger.info(f"Response: {response.status_code} for {request.path}")
+    return response
+
+@app.errorhandler(Exception)
+def log_error(e):
+    logger.error(f"Error occurred: {str(e)}", exc_info=True)
+    return jsonify({"error": "An internal error occurred"}), 500
+
+
+
+
+
 
 # Home route for Sample Management System
 @app.route('/')

@@ -1,0 +1,45 @@
+2024-12-16 01:08:00,126 - INFO - Request: GET /
+2024-12-16 01:08:00,135 - INFO - Response: 200 for /
+2024-12-16 01:08:00,297 - INFO - Request: GET /static/css/styles.css
+2024-12-16 01:08:00,299 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 01:08:00,364 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 01:08:00,365 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 01:08:00,381 - INFO - Request: GET /experiments
+2024-12-16 01:08:00,385 - INFO - Request: GET /samples
+2024-12-16 01:08:00,386 - INFO - Request: GET /quantitative_results
+2024-12-16 01:08:00,388 - INFO - Request: GET /qualitative_results
+2024-12-16 01:08:00,390 - INFO - Request: GET /methods
+2024-12-16 01:08:00,392 - INFO - Request: GET /operators
+2024-12-16 01:08:00,399 - INFO - Response: 200 for /samples
+2024-12-16 01:08:00,406 - INFO - Response: 200 for /experiments
+2024-12-16 01:08:00,406 - INFO - Response: 200 for /quantitative_results
+2024-12-16 01:08:00,407 - INFO - Request: GET /analysts
+2024-12-16 01:08:00,407 - INFO - Response: 200 for /qualitative_results
+2024-12-16 01:08:00,408 - INFO - Response: 200 for /methods
+2024-12-16 01:08:00,413 - INFO - Request: GET /samples
+2024-12-16 01:08:00,416 - INFO - Response: 200 for /operators
+2024-12-16 01:08:00,416 - INFO - Request: GET /experiments
+2024-12-16 01:08:00,420 - INFO - Response: 200 for /analysts
+2024-12-16 01:08:00,421 - INFO - Request: GET /quantitative_results
+2024-12-16 01:08:00,423 - INFO - Response: 200 for /samples
+2024-12-16 01:08:00,425 - INFO - Request: GET /qualitative_results
+2024-12-16 01:08:00,427 - INFO - Response: 200 for /experiments
+2024-12-16 01:08:00,430 - INFO - Request: GET /methods
+2024-12-16 01:08:00,434 - INFO - Request: GET /operators
+2024-12-16 01:08:00,439 - INFO - Request: GET /analysts
+2024-12-16 01:08:00,441 - INFO - Response: 200 for /methods
+2024-12-16 01:08:00,442 - INFO - Response: 200 for /quantitative_results
+2024-12-16 01:08:00,443 - INFO - Response: 200 for /operators
+2024-12-16 01:08:00,443 - INFO - Response: 200 for /qualitative_results
+2024-12-16 01:08:00,446 - INFO - Request: GET /quantitative_results
+2024-12-16 01:08:00,447 - INFO - Response: 200 for /analysts
+2024-12-16 01:08:00,452 - INFO - Response: 200 for /quantitative_results
+2024-12-16 01:08:00,462 - INFO - Request: GET /qualitative_results
+2024-12-16 01:08:00,463 - INFO - Response: 200 for /qualitative_results
+2024-12-16 01:08:00,471 - INFO - Request: GET /experiments
+2024-12-16 01:08:00,473 - INFO - Response: 200 for /experiments
+2024-12-16 01:08:29,318 - INFO - Request: POST /add_analyst
+2024-12-16 01:08:29,320 - INFO - Data: {'name': 'asdfasdf', 'contact': '12345678900'}
+2024-12-16 01:08:29,323 - INFO - Response: 200 for /add_analyst
+2024-12-16 01:08:30,585 - INFO - Request: GET /analysts
+2024-12-16 01:08:30,587 - INFO - Response: 200 for /analysts
