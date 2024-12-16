@@ -1,6 +1,13 @@
 import logging
 from logging.handlers import TimedRotatingFileHandler
-from flask import Flask, request, jsonify
+
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.sql import text
+from flask import request, jsonify
+import os
+from werkzeug.utils import secure_filename
+
 
 # Configure logging
 log_handler = TimedRotatingFileHandler('logs/audit.log', when='H', interval=1, backupCount=24)
@@ -13,14 +20,6 @@ logger.addHandler(log_handler)
 
 
 
-
-
-from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import text
-from flask import request, jsonify
-import os
-from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
