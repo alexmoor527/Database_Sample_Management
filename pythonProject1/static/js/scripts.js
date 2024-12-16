@@ -221,7 +221,6 @@ document.getElementById('add-qualitative-result-form').addEventListener('submit'
 });
 
 
-
     // Add Method
     document.getElementById('add-method-form').addEventListener('submit', async (event) => {
         event.preventDefault();
@@ -237,11 +236,11 @@ document.getElementById('add-qualitative-result-form').addEventListener('submit'
         event.preventDefault();
         const operatorData = {
             name: document.getElementById('operator-name').value,
-            contact: document.getElementById('operator-contact').value,
-            status: document.getElementById('operator-status').value
+            contact: document.getElementById('operator-contact').value
         };
         await submitForm('/add_operator', operatorData, loadOperators, 'Operator');
     });
+
 
     // Add Analyst
     document.getElementById('add-analyst-form').addEventListener('submit', async (event) => {
@@ -249,7 +248,6 @@ document.getElementById('add-qualitative-result-form').addEventListener('submit'
         const analystData = {
             name: document.getElementById('analyst-name').value,
             contact: document.getElementById('analyst-contact').value,
-            status: document.getElementById('analyst-status').value
         };
         await submitForm('/add_analyst', analystData, loadAnalysts, 'Analyst');
     });
@@ -319,6 +317,13 @@ function renderTable(tableId, data, columns) {
                 link.textContent = 'View PDF';
                 link.target = '_blank';
                 cell.appendChild(link);
+            }
+
+            else if (column === 'PassFail') {
+                cell.textContent = item[column] === true || item[column] === 1 ? 'Pass' : 'Fail';
+
+
+
             } else if (column === 'Status') {
                 const dropdown = document.createElement('select');
                 const statuses = validOptions[tableKey] || [];
@@ -415,8 +420,6 @@ document.getElementById('theme-toggle').addEventListener('change', (event) => {
 });
 
 
-
-
 // Australian Mode
 let currentDegrees = 0; // Track the current rotation angle
 let targetDegrees = 0; // The target rotation angle
@@ -450,8 +453,6 @@ document.getElementById('australian-mode').addEventListener('change', (event) =>
 });
 
 
-
-
 // Detect the system's theme preference (light or dark)
 const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -470,12 +471,6 @@ themeToggleCheckbox.addEventListener('change', (event) => {
 if (prefersDarkMode) {
     document.body.classList.add('dark-mode');
 }
-
-
-
-
-
-
 
 
 
@@ -542,7 +537,4 @@ document.addEventListener('DOMContentLoaded', () => {
         chart.draw(chartData, options);
     }
 });
-
-
-
 

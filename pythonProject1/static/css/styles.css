@@ -17,11 +17,9 @@ header h1 {
 }
 
 
-
 header p {
     color: #6c757d; /* Light grey text for p in normal mode */
 }
-
 
 
 /* Table in Normal Mode */
@@ -183,7 +181,6 @@ body.dark-mode input[type="date"]::-webkit-inner-spin-button,
 body.dark-mode input[type="date"]::-webkit-clear-button {
     filter: invert(1); /* Adjust the spinner and clear button for dark mode */
 }
-
 
 
 @media (max-width: 768px) {

@@ -1,9 +1,31 @@
+import logging
+from logging.handlers import TimedRotatingFileHandler
+from datetime import datetime
+
+
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.sql import text
 from flask import request, jsonify
 import os
 from werkzeug.utils import secure_filename
+
+
+# Generate log file name with timestamp
+def get_log_file_name():
+    timestamp = datetime.now().strftime('%Y-%m-%d_%H')
+    return f'logs/audit_{timestamp}.log'
+
+# Configure logging with automatic hourly rotation
+log_handler = TimedRotatingFileHandler('logs/audit.log', when='H', interval=1, backupCount=24)  # Rotate every hour
+log_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+log_handler.setFormatter(log_formatter)
+
+logger = logging.getLogger('AuditLogger')
+logger.setLevel(logging.INFO)
+logger.addHandler(log_handler)
+
+
 
 app = Flask(__name__)
 
@@ -17,6 +39,37 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Initialize SQLAlchemy
 db = SQLAlchemy(app)
+
+
+
+
+# Logging
+@app.before_request
+def log_request_info():
+    logger.info(f"Request: {request.method} {request.path}")
+
+    # Log JSON data only if Content-Type is application/json
+    if request.content_type == 'application/json':
+        logger.info(f"Data: {request.json}")
+    else:
+        logger.info(f"Form Data: {request.form}")
+        logger.info(f"Files: {request.files}")
+
+
+@app.after_request
+def log_response_info(response):
+    logger.info(f"Response: {response.status_code} for {request.path}")
+    return response
+
+@app.errorhandler(Exception)
+def log_error(e):
+    logger.error(f"Error occurred: {str(e)}", exc_info=True)
+    return jsonify({"error": "An internal error occurred"}), 500
+
+
+
+
+
 
 # Home route for Sample Management System
 @app.route('/')
@@ -37,10 +90,10 @@ def add_operator():
     data = request.json
     try:
         with db.engine.connect() as connection:
-            transaction = connection.begin()  # Start transaction
+            transaction = connection.begin()  # Start a transaction
             connection.execute(
                 text("INSERT INTO Operators (Name, ContactInfo, Status) VALUES (:name, :contact, :status)"),
-                {"name": data['name'], "contact": data['contact'], "status": data['status']}
+                {"name": data['name'], "contact": data['contact'], "status": data.get('status', 'Active')}  # Default to 'Active'
             )
             transaction.commit()  # Commit transaction
         return jsonify({"message": "Operator added successfully!"})
@@ -125,8 +178,6 @@ def get_methods():
 
 
 
-
-
 @app.route('/add_method', methods=['POST'])
 def add_method():
     data = request.json
@@ -165,20 +216,17 @@ def get_analysts():
 @app.route('/add_analyst', methods=['POST'])
 def add_analyst():
     data = request.json
-    name = data.get('name')
-    contact = data.get('contact')
-    status = data.get('status', 'Active')  # Default to 'Active' if not provided
-
     try:
         with db.engine.connect() as connection:
             transaction = connection.begin()  # Start a transaction
             connection.execute(
                 text("INSERT INTO Analysts (Name, ContactInfo, Status) VALUES (:name, :contact, :status)"),
-                {"name": name, "contact": contact, "status": status}
+                {"name": data['name'], "contact": data['contact'], "status": data.get('status', 'Active')}  # Default to 'Active'
             )
-            transaction.commit()  # Commit the transaction
+            transaction.commit()  # Commit transaction
         return jsonify({"message": "Analyst added successfully!"})
     except Exception as e:
+        print(f"Error adding analyst: {e}")
         return jsonify({"error": str(e)}), 500
 
 
@@ -394,7 +442,6 @@ def update_status(table):
     except Exception as e:
         print(f"Error updating status for table={table}: {e}")
         return jsonify({"error": str(e)}), 500
-
 
 
 

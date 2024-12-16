@@ -1,0 +1,11 @@
+# Logs
+pythonProject1/logs/
+
+# Uploads
+pythonProject1/static/uploads/
+
+# IDE files
+pythonProject1/.idea/
+
+# Virtual Environment
+pythonProject1/.venv/
