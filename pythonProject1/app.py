@@ -1,5 +1,6 @@
-from datetime import datetime
 import logging
+from logging.handlers import TimedRotatingFileHandler
+from datetime import datetime
 
 
 from flask import Flask, render_template
@@ -15,9 +16,8 @@ def get_log_file_name():
     timestamp = datetime.now().strftime('%Y-%m-%d_%H')
     return f'logs/audit_{timestamp}.log'
 
-# Configure logging
-log_file = get_log_file_name()
-log_handler = logging.FileHandler(log_file)
+# Configure logging with automatic hourly rotation
+log_handler = TimedRotatingFileHandler('logs/audit.log', when='H', interval=1, backupCount=24)  # Rotate every hour
 log_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 log_handler.setFormatter(log_formatter)
 
