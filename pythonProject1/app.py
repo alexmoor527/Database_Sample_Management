@@ -1,5 +1,6 @@
+from datetime import datetime
 import logging
-from logging.handlers import TimedRotatingFileHandler
+
 
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
@@ -9,15 +10,20 @@ import os
 from werkzeug.utils import secure_filename
 
 
+# Generate log file name with timestamp
+def get_log_file_name():
+    timestamp = datetime.now().strftime('%Y-%m-%d_%H')
+    return f'logs/audit_{timestamp}.log'
+
 # Configure logging
-log_handler = TimedRotatingFileHandler('logs/audit.log', when='H', interval=1, backupCount=24)
+log_file = get_log_file_name()
+log_handler = logging.FileHandler(log_file)
 log_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 log_handler.setFormatter(log_formatter)
 
 logger = logging.getLogger('AuditLogger')
 logger.setLevel(logging.INFO)
 logger.addHandler(log_handler)
-
 
 
 
@@ -41,8 +47,14 @@ db = SQLAlchemy(app)
 @app.before_request
 def log_request_info():
     logger.info(f"Request: {request.method} {request.path}")
-    if request.method == 'POST':
+
+    # Log JSON data only if Content-Type is application/json
+    if request.content_type == 'application/json':
         logger.info(f"Data: {request.json}")
+    else:
+        logger.info(f"Form Data: {request.form}")
+        logger.info(f"Files: {request.files}")
+
 
 @app.after_request
 def log_response_info(response):

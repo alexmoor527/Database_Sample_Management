@@ -1,0 +1,295 @@
+2024-12-16 14:04:50,797 - INFO - Request: GET /
+2024-12-16 14:04:50,803 - INFO - Response: 200 for /
+2024-12-16 14:04:50,844 - INFO - Request: GET /static/css/styles.css
+2024-12-16 14:04:50,847 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 14:04:50,908 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 14:04:50,909 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 14:04:50,927 - INFO - Request: GET /experiments
+2024-12-16 14:04:50,928 - INFO - Request: GET /samples
+2024-12-16 14:04:50,930 - INFO - Request: GET /quantitative_results
+2024-12-16 14:04:50,931 - INFO - Request: GET /qualitative_results
+2024-12-16 14:04:50,933 - INFO - Request: GET /methods
+2024-12-16 14:04:50,935 - INFO - Request: GET /operators
+2024-12-16 14:04:50,945 - INFO - Response: 200 for /qualitative_results
+2024-12-16 14:04:50,945 - INFO - Response: 200 for /experiments
+2024-12-16 14:04:50,966 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:04:50,967 - INFO - Request: GET /analysts
+2024-12-16 14:04:50,969 - INFO - Response: 200 for /samples
+2024-12-16 14:04:50,969 - INFO - Response: 200 for /methods
+2024-12-16 14:04:50,973 - INFO - Request: GET /qualitative_results
+2024-12-16 14:04:50,974 - INFO - Response: 200 for /operators
+2024-12-16 14:04:50,977 - INFO - Response: 200 for /analysts
+2024-12-16 14:04:50,978 - INFO - Request: GET /experiments
+2024-12-16 14:04:50,981 - INFO - Request: GET /quantitative_results
+2024-12-16 14:04:50,983 - INFO - Request: GET /samples
+2024-12-16 14:04:50,984 - INFO - Response: 200 for /experiments
+2024-12-16 14:04:50,985 - INFO - Request: GET /methods
+2024-12-16 14:04:50,987 - INFO - Response: 200 for /qualitative_results
+2024-12-16 14:04:50,989 - INFO - Request: GET /operators
+2024-12-16 14:04:50,992 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:04:50,993 - INFO - Response: 200 for /methods
+2024-12-16 14:04:50,996 - INFO - Request: GET /analysts
+2024-12-16 14:04:50,997 - INFO - Response: 200 for /samples
+2024-12-16 14:04:50,998 - INFO - Request: GET /quantitative_results
+2024-12-16 14:04:50,999 - INFO - Response: 200 for /operators
+2024-12-16 14:04:51,003 - INFO - Response: 200 for /analysts
+2024-12-16 14:04:51,006 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:04:51,015 - INFO - Request: GET /qualitative_results
+2024-12-16 14:04:51,017 - INFO - Response: 200 for /qualitative_results
+2024-12-16 14:04:51,022 - INFO - Request: GET /experiments
+2024-12-16 14:04:51,024 - INFO - Response: 200 for /experiments
+2024-12-16 14:05:08,012 - INFO - Request: POST /add_analyst
+2024-12-16 14:05:08,012 - INFO - Data: {'name': 'asdf', 'contact': '123'}
+2024-12-16 14:05:08,017 - INFO - Response: 200 for /add_analyst
+2024-12-16 14:05:09,035 - INFO - Request: GET /analysts
+2024-12-16 14:05:09,036 - INFO - Response: 200 for /analysts
+2024-12-16 14:05:48,408 - INFO - Request: POST /add_experiment
+2024-12-16 14:05:48,408 - INFO - Data: {'name': 'Cubane', 'startDate': '2024-12-16', 'endDate': '', 'description': 'Synthesis of Cubane', 'status': 'Planned', 'operatorId': '1'}
+2024-12-16 14:05:48,422 - INFO - Response: 200 for /add_experiment
+2024-12-16 14:05:49,947 - INFO - Request: GET /experiments
+2024-12-16 14:05:49,950 - INFO - Response: 200 for /experiments
+2024-12-16 14:06:03,915 - INFO - Request: POST /api/update_experiments_status
+2024-12-16 14:06:03,915 - INFO - Data: {'id': '2', 'status': 'Ongoing'}
+2024-12-16 14:06:03,920 - INFO - Response: 200 for /api/update_experiments_status
+2024-12-16 14:06:07,137 - INFO - Request: POST /api/update_experiments_status
+2024-12-16 14:06:07,137 - INFO - Data: {'id': '1', 'status': 'Planned'}
+2024-12-16 14:06:07,154 - INFO - Response: 200 for /api/update_experiments_status
+2024-12-16 14:07:23,829 - INFO - Request: POST /add_sample
+2024-12-16 14:07:23,830 - INFO - Data: {'experimentId': '2', 'name': 'IPC', 'description': 'IPC during reaction', 'operatorId': '1'}
+2024-12-16 14:07:23,834 - INFO - Response: 200 for /add_sample
+2024-12-16 14:07:24,685 - INFO - Request: GET /samples
+2024-12-16 14:07:24,687 - INFO - Response: 200 for /samples
+2024-12-16 14:09:48,305 - INFO - Request: POST /upload_quantitative_result
+2024-12-16 14:09:48,305 - ERROR - Error occurred: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Traceback (most recent call last):
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\app.py", line 51, in log_request_info
+    logger.info(f"Data: {request.json}")
+                         ^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 560, in json
+    return self.get_json()
+           ^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 604, in get_json
+    return self.on_json_loading_failed(None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 647, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+2024-12-16 14:09:48,371 - INFO - Response: 500 for /upload_quantitative_result
+2024-12-16 14:09:52,091 - INFO - Request: GET /
+2024-12-16 14:09:52,092 - INFO - Response: 200 for /
+2024-12-16 14:09:52,137 - INFO - Request: GET /static/css/styles.css
+2024-12-16 14:09:52,141 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 14:09:52,150 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 14:09:52,170 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 14:09:52,177 - INFO - Request: GET /experiments
+2024-12-16 14:09:52,179 - INFO - Request: GET /samples
+2024-12-16 14:09:52,180 - INFO - Response: 200 for /experiments
+2024-12-16 14:09:52,180 - INFO - Request: GET /quantitative_results
+2024-12-16 14:09:52,181 - INFO - Request: GET /qualitative_results
+2024-12-16 14:09:52,184 - INFO - Request: GET /methods
+2024-12-16 14:09:52,186 - INFO - Request: GET /operators
+2024-12-16 14:09:52,188 - INFO - Response: 200 for /samples
+2024-12-16 14:09:52,189 - INFO - Response: 200 for /qualitative_results
+2024-12-16 14:09:52,190 - INFO - Request: GET /analysts
+2024-12-16 14:09:52,192 - INFO - Response: 200 for /methods
+2024-12-16 14:09:52,192 - INFO - Response: 200 for /operators
+2024-12-16 14:09:52,192 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:09:52,196 - INFO - Request: GET /experiments
+2024-12-16 14:09:52,197 - INFO - Response: 200 for /analysts
+2024-12-16 14:09:52,198 - INFO - Request: GET /samples
+2024-12-16 14:09:52,202 - INFO - Request: GET /qualitative_results
+2024-12-16 14:09:52,204 - INFO - Request: GET /methods
+2024-12-16 14:09:52,205 - INFO - Response: 200 for /experiments
+2024-12-16 14:09:52,207 - INFO - Request: GET /operators
+2024-12-16 14:09:52,208 - INFO - Response: 200 for /qualitative_results
+2024-12-16 14:09:52,209 - INFO - Response: 200 for /samples
+2024-12-16 14:09:52,211 - INFO - Request: GET /quantitative_results
+2024-12-16 14:09:52,212 - INFO - Response: 200 for /methods
+2024-12-16 14:09:52,215 - INFO - Request: GET /analysts
+2024-12-16 14:09:52,216 - INFO - Response: 200 for /operators
+2024-12-16 14:09:52,217 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:09:52,218 - INFO - Response: 200 for /analysts
+2024-12-16 14:09:52,252 - INFO - Request: GET /quantitative_results
+2024-12-16 14:09:52,254 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:09:52,262 - INFO - Request: GET /qualitative_results
+2024-12-16 14:09:52,265 - INFO - Response: 200 for /qualitative_results
+2024-12-16 14:09:52,270 - INFO - Request: GET /experiments
+2024-12-16 14:09:52,272 - INFO - Response: 200 for /experiments
+2024-12-16 14:10:13,101 - INFO - Request: POST /upload_quantitative_result
+2024-12-16 14:10:13,101 - ERROR - Error occurred: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Traceback (most recent call last):
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\app.py", line 51, in log_request_info
+    logger.info(f"Data: {request.json}")
+                         ^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 560, in json
+    return self.get_json()
+           ^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 604, in get_json
+    return self.on_json_loading_failed(None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 647, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+2024-12-16 14:10:13,102 - INFO - Response: 500 for /upload_quantitative_result
+2024-12-16 14:10:16,861 - INFO - Request: POST /upload_quantitative_result
+2024-12-16 14:10:16,861 - ERROR - Error occurred: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Traceback (most recent call last):
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\app.py", line 51, in log_request_info
+    logger.info(f"Data: {request.json}")
+                         ^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 560, in json
+    return self.get_json()
+           ^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 604, in get_json
+    return self.on_json_loading_failed(None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 647, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+2024-12-16 14:10:16,862 - INFO - Response: 500 for /upload_quantitative_result
+2024-12-16 14:10:35,307 - INFO - Request: GET /static/css/styles.css
+2024-12-16 14:10:35,308 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 14:10:50,231 - INFO - Request: POST /upload_quantitative_result
+2024-12-16 14:10:50,231 - ERROR - Error occurred: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+Traceback (most recent call last):
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\app.py", line 51, in log_request_info
+    logger.info(f"Data: {request.json}")
+                         ^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 560, in json
+    return self.get_json()
+           ^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 604, in get_json
+    return self.on_json_loading_failed(None)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\wrappers.py", line 214, in on_json_loading_failed
+    return super().on_json_loading_failed(e)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\wrappers\request.py", line 647, in on_json_loading_failed
+    raise UnsupportedMediaType(
+werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not attempt to load JSON data because the request Content-Type was not 'application/json'.
+2024-12-16 14:10:50,232 - INFO - Response: 500 for /upload_quantitative_result
+2024-12-16 14:13:26,501 - INFO - Request: GET /
+2024-12-16 14:13:26,514 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,515 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,549 - INFO - Response: 200 for /
+2024-12-16 14:13:26,601 - INFO - Request: GET /static/css/styles.css
+2024-12-16 14:13:26,602 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,602 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,603 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 14:13:26,604 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,604 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,669 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 14:13:26,670 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 14:13:26,709 - INFO - Request: GET /experiments
+2024-12-16 14:13:26,710 - INFO - Request: GET /samples
+2024-12-16 14:13:26,710 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,710 - INFO - Request: GET /quantitative_results
+2024-12-16 14:13:26,711 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,711 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,712 - INFO - Request: GET /qualitative_results
+2024-12-16 14:13:26,712 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,712 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,713 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,713 - INFO - Request: GET /methods
+2024-12-16 14:13:26,714 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,714 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,715 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,716 - INFO - Request: GET /operators
+2024-12-16 14:13:26,716 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,716 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,717 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,727 - INFO - Response: 200 for /qualitative_results
+2024-12-16 14:13:26,729 - INFO - Response: 200 for /experiments
+2024-12-16 14:13:26,733 - INFO - Request: GET /analysts
+2024-12-16 14:13:26,733 - INFO - Response: 200 for /operators
+2024-12-16 14:13:26,734 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:13:26,734 - INFO - Response: 200 for /methods
+2024-12-16 14:13:26,736 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,737 - INFO - Request: GET /qualitative_results
+2024-12-16 14:13:26,737 - INFO - Response: 200 for /samples
+2024-12-16 14:13:26,738 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,739 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,740 - INFO - Request: GET /experiments
+2024-12-16 14:13:26,744 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,745 - INFO - Request: GET /operators
+2024-12-16 14:13:26,746 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,748 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,749 - INFO - Request: GET /quantitative_results
+2024-12-16 14:13:26,750 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,752 - INFO - Request: GET /methods
+2024-12-16 14:13:26,752 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,752 - INFO - Response: 200 for /analysts
+2024-12-16 14:13:26,752 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,753 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,754 - INFO - Response: 200 for /qualitative_results
+2024-12-16 14:13:26,755 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,755 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,757 - INFO - Response: 200 for /experiments
+2024-12-16 14:13:26,757 - INFO - Response: 200 for /operators
+2024-12-16 14:13:26,761 - INFO - Request: GET /samples
+2024-12-16 14:13:26,765 - INFO - Request: GET /analysts
+2024-12-16 14:13:26,765 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,766 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,768 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,769 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:13:26,769 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,769 - INFO - Response: 200 for /methods
+2024-12-16 14:13:26,773 - INFO - Response: 200 for /samples
+2024-12-16 14:13:26,773 - INFO - Response: 200 for /analysts
+2024-12-16 14:13:26,829 - INFO - Request: GET /quantitative_results
+2024-12-16 14:13:26,829 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,829 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,832 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:13:26,845 - INFO - Request: GET /qualitative_results
+2024-12-16 14:13:26,845 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,845 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,848 - INFO - Response: 200 for /qualitative_results
+2024-12-16 14:13:26,855 - INFO - Request: GET /experiments
+2024-12-16 14:13:26,856 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:26,856 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:26,857 - INFO - Response: 200 for /experiments
+2024-12-16 14:13:47,500 - INFO - Request: POST /upload_quantitative_result
+2024-12-16 14:13:47,513 - INFO - Form Data: ImmutableMultiDict([('sampleId', '3'), ('methodId', '1'), ('analystId', '1'), ('resultValue', '98.2'), ('specification', '98.0'), ('passFail', 'TRUE'), ('status', 'Valid')])
+2024-12-16 14:13:47,513 - INFO - Files: ImmutableMultiDict([('pdfFile', <FileStorage: 'hplc_report.pdf' ('application/pdf')>)])
+2024-12-16 14:13:47,519 - INFO - Response: 200 for /upload_quantitative_result
+2024-12-16 14:13:48,812 - INFO - Request: GET /quantitative_results
+2024-12-16 14:13:48,812 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:48,812 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:48,816 - INFO - Response: 200 for /quantitative_results
+2024-12-16 14:13:52,270 - INFO - Request: GET /static/uploads/hplc_report.pdf
+2024-12-16 14:13:52,272 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:13:52,272 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:13:52,284 - INFO - Response: 200 for /static/uploads/hplc_report.pdf
