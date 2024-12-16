@@ -403,3 +403,640 @@ werkzeug.exceptions.UnsupportedMediaType: 415 Unsupported Media Type: Did not at
 2024-12-16 14:21:14,625 - INFO - Form Data: ImmutableMultiDict([])
 2024-12-16 14:21:14,625 - INFO - Files: ImmutableMultiDict([])
 2024-12-16 14:21:14,627 - INFO - Response: 200 for /samples
+2024-12-16 14:45:07,988 - INFO - Request: GET /static/uploads/hplc_report.pdf
+2024-12-16 14:45:07,988 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 14:45:07,988 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 14:45:08,003 - INFO - Response: 304 for /static/uploads/hplc_report.pdf
+2024-12-16 15:03:23,322 - INFO - Request: GET /static/uploads/nmr_report.pdf
+2024-12-16 15:03:23,323 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:03:23,323 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:03:23,341 - INFO - Response: 304 for /static/uploads/nmr_report.pdf
+2024-12-16 15:03:50,781 - INFO - Request: GET /static/uploads/hplc_report.pdf
+2024-12-16 15:03:50,782 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:03:50,782 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:03:50,782 - INFO - Response: 304 for /static/uploads/hplc_report.pdf
+2024-12-16 15:04:25,345 - INFO - Request: GET /
+2024-12-16 15:04:25,345 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,345 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,346 - INFO - Response: 200 for /
+2024-12-16 15:04:25,390 - INFO - Request: GET /static/css/styles.css
+2024-12-16 15:04:25,391 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,391 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,393 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 15:04:25,394 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,394 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,402 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 15:04:25,423 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 15:04:25,458 - INFO - Request: GET /experiments
+2024-12-16 15:04:25,458 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,458 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,460 - INFO - Request: GET /quantitative_results
+2024-12-16 15:04:25,461 - INFO - Request: GET /qualitative_results
+2024-12-16 15:04:25,461 - INFO - Request: GET /samples
+2024-12-16 15:04:25,461 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,462 - INFO - Request: GET /methods
+2024-12-16 15:04:25,462 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,463 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,465 - INFO - Request: GET /operators
+2024-12-16 15:04:25,465 - INFO - Response: 200 for /experiments
+2024-12-16 15:04:25,465 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,465 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,465 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,465 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,466 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,467 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,472 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,482 - INFO - Request: GET /analysts
+2024-12-16 15:04:25,486 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,487 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,488 - INFO - Response: 200 for /operators
+2024-12-16 15:04:25,489 - INFO - Response: 200 for /methods
+2024-12-16 15:04:25,493 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:04:25,498 - INFO - Request: GET /experiments
+2024-12-16 15:04:25,498 - INFO - Response: 200 for /samples
+2024-12-16 15:04:25,499 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,502 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,503 - INFO - Request: GET /operators
+2024-12-16 15:04:25,503 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:04:25,504 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,506 - INFO - Request: GET /methods
+2024-12-16 15:04:25,507 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,508 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,509 - INFO - Response: 200 for /analysts
+2024-12-16 15:04:25,509 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,511 - INFO - Response: 200 for /experiments
+2024-12-16 15:04:25,511 - INFO - Request: GET /qualitative_results
+2024-12-16 15:04:25,513 - INFO - Request: GET /samples
+2024-12-16 15:04:25,515 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,516 - INFO - Response: 200 for /operators
+2024-12-16 15:04:25,516 - INFO - Request: GET /quantitative_results
+2024-12-16 15:04:25,517 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,518 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,520 - INFO - Response: 200 for /methods
+2024-12-16 15:04:25,521 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,521 - INFO - Request: GET /analysts
+2024-12-16 15:04:25,522 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,523 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,524 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,527 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,532 - INFO - Response: 200 for /samples
+2024-12-16 15:04:25,532 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:04:25,533 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:04:25,535 - INFO - Response: 200 for /analysts
+2024-12-16 15:04:25,572 - INFO - Request: GET /quantitative_results
+2024-12-16 15:04:25,573 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,573 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,574 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:04:25,583 - INFO - Request: GET /qualitative_results
+2024-12-16 15:04:25,584 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,584 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,585 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:04:25,604 - INFO - Request: GET /experiments
+2024-12-16 15:04:25,604 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:04:25,604 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:04:25,607 - INFO - Response: 200 for /experiments
+2024-12-16 15:06:55,889 - INFO - Request: GET /
+2024-12-16 15:06:55,889 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,889 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,889 - INFO - Response: 200 for /
+2024-12-16 15:06:55,935 - INFO - Request: GET /static/css/styles.css
+2024-12-16 15:06:55,935 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,935 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,936 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 15:06:55,939 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 15:06:55,940 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,940 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,940 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 15:06:55,960 - INFO - Request: GET /experiments
+2024-12-16 15:06:55,960 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,960 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,962 - INFO - Request: GET /samples
+2024-12-16 15:06:55,963 - INFO - Request: GET /quantitative_results
+2024-12-16 15:06:55,963 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,963 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,963 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,964 - INFO - Request: GET /qualitative_results
+2024-12-16 15:06:55,964 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,965 - INFO - Response: 200 for /experiments
+2024-12-16 15:06:55,965 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,966 - INFO - Request: GET /methods
+2024-12-16 15:06:55,967 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,968 - INFO - Request: GET /operators
+2024-12-16 15:06:55,968 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,968 - INFO - Response: 200 for /samples
+2024-12-16 15:06:55,969 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:06:55,970 - INFO - Request: GET /analysts
+2024-12-16 15:06:55,970 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,972 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,972 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:06:55,973 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,973 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,976 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,977 - INFO - Request: GET /experiments
+2024-12-16 15:06:55,980 - INFO - Request: GET /samples
+2024-12-16 15:06:55,981 - INFO - Response: 200 for /methods
+2024-12-16 15:06:55,981 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,982 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,983 - INFO - Request: GET /quantitative_results
+2024-12-16 15:06:55,983 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,983 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,984 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,985 - INFO - Response: 200 for /analysts
+2024-12-16 15:06:55,986 - INFO - Response: 200 for /operators
+2024-12-16 15:06:55,987 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,987 - INFO - Request: GET /qualitative_results
+2024-12-16 15:06:55,990 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,991 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,992 - INFO - Request: GET /methods
+2024-12-16 15:06:55,992 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,993 - INFO - Response: 200 for /samples
+2024-12-16 15:06:55,994 - INFO - Response: 200 for /experiments
+2024-12-16 15:06:55,994 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:55,995 - INFO - Request: GET /analysts
+2024-12-16 15:06:55,996 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:06:55,998 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:06:55,998 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:55,999 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:56,000 - INFO - Response: 200 for /methods
+2024-12-16 15:06:56,002 - INFO - Request: GET /operators
+2024-12-16 15:06:56,003 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:56,003 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:56,005 - INFO - Request: GET /quantitative_results
+2024-12-16 15:06:56,005 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:56,005 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:56,005 - INFO - Response: 200 for /analysts
+2024-12-16 15:06:56,008 - INFO - Response: 200 for /operators
+2024-12-16 15:06:56,010 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:06:56,018 - INFO - Request: GET /qualitative_results
+2024-12-16 15:06:56,018 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:56,018 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:56,019 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:06:56,023 - INFO - Request: GET /experiments
+2024-12-16 15:06:56,023 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:06:56,024 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:06:56,025 - INFO - Response: 200 for /experiments
+2024-12-16 15:08:06,808 - INFO - Request: GET /
+2024-12-16 15:08:06,808 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,808 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,809 - INFO - Response: 200 for /
+2024-12-16 15:08:06,844 - INFO - Request: GET /static/css/styles.css
+2024-12-16 15:08:06,844 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,844 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,844 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 15:08:06,853 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 15:08:06,853 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,853 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,854 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 15:08:06,869 - INFO - Request: GET /experiments
+2024-12-16 15:08:06,870 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,870 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,872 - INFO - Request: GET /samples
+2024-12-16 15:08:06,872 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,873 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,873 - INFO - Response: 200 for /experiments
+2024-12-16 15:08:06,874 - INFO - Request: GET /quantitative_results
+2024-12-16 15:08:06,875 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,875 - INFO - Request: GET /qualitative_results
+2024-12-16 15:08:06,875 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,876 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,876 - INFO - Request: GET /methods
+2024-12-16 15:08:06,878 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,878 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,879 - INFO - Request: GET /operators
+2024-12-16 15:08:06,879 - INFO - Response: 200 for /samples
+2024-12-16 15:08:06,880 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,881 - INFO - Request: GET /analysts
+2024-12-16 15:08:06,881 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,882 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:08:06,882 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,883 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,885 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:08:06,885 - INFO - Response: 200 for /methods
+2024-12-16 15:08:06,885 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,887 - INFO - Response: 200 for /operators
+2024-12-16 15:08:06,888 - INFO - Response: 200 for /analysts
+2024-12-16 15:08:06,896 - INFO - Request: GET /experiments
+2024-12-16 15:08:06,897 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,898 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,901 - INFO - Request: GET /samples
+2024-12-16 15:08:06,901 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,902 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,904 - INFO - Request: GET /quantitative_results
+2024-12-16 15:08:06,904 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,905 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,909 - INFO - Request: GET /qualitative_results
+2024-12-16 15:08:06,926 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,929 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,930 - INFO - Response: 200 for /experiments
+2024-12-16 15:08:06,932 - INFO - Request: GET /methods
+2024-12-16 15:08:06,933 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,933 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,935 - INFO - Response: 200 for /samples
+2024-12-16 15:08:06,937 - INFO - Request: GET /operators
+2024-12-16 15:08:06,938 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:08:06,939 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,939 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:08:06,942 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,943 - INFO - Request: GET /analysts
+2024-12-16 15:08:06,943 - INFO - Response: 200 for /methods
+2024-12-16 15:08:06,945 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,945 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,948 - INFO - Request: GET /quantitative_results
+2024-12-16 15:08:06,950 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,950 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,951 - INFO - Response: 200 for /operators
+2024-12-16 15:08:06,952 - INFO - Response: 200 for /analysts
+2024-12-16 15:08:06,954 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:08:06,959 - INFO - Request: GET /qualitative_results
+2024-12-16 15:08:06,960 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,960 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,961 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:08:06,965 - INFO - Request: GET /experiments
+2024-12-16 15:08:06,965 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:08:06,965 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:08:06,967 - INFO - Response: 200 for /experiments
+2024-12-16 15:15:57,242 - INFO - Request: GET /
+2024-12-16 15:15:57,242 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,242 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,242 - INFO - Response: 200 for /
+2024-12-16 15:15:57,284 - INFO - Request: GET /static/css/styles.css
+2024-12-16 15:15:57,285 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 15:15:57,285 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,285 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,285 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,286 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,286 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 15:15:57,287 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 15:15:57,313 - INFO - Request: GET /experiments
+2024-12-16 15:15:57,313 - INFO - Request: GET /samples
+2024-12-16 15:15:57,314 - INFO - Request: GET /quantitative_results
+2024-12-16 15:15:57,314 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,315 - INFO - Request: GET /qualitative_results
+2024-12-16 15:15:57,315 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,315 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,315 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,316 - INFO - Request: GET /methods
+2024-12-16 15:15:57,316 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,316 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,318 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,318 - INFO - Request: GET /operators
+2024-12-16 15:15:57,318 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,318 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,319 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,319 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,321 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,321 - INFO - Response: 200 for /samples
+2024-12-16 15:15:57,323 - INFO - Response: 200 for /experiments
+2024-12-16 15:15:57,324 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:15:57,325 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:15:57,328 - INFO - Request: GET /analysts
+2024-12-16 15:15:57,329 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,329 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,332 - INFO - Request: GET /samples
+2024-12-16 15:15:57,332 - INFO - Response: 200 for /operators
+2024-12-16 15:15:57,333 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,333 - INFO - Response: 200 for /methods
+2024-12-16 15:15:57,335 - INFO - Request: GET /experiments
+2024-12-16 15:15:57,335 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,336 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,336 - INFO - Request: GET /qualitative_results
+2024-12-16 15:15:57,338 - INFO - Response: 200 for /analysts
+2024-12-16 15:15:57,338 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,340 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,340 - INFO - Request: GET /quantitative_results
+2024-12-16 15:15:57,341 - INFO - Request: GET /operators
+2024-12-16 15:15:57,342 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,342 - INFO - Response: 200 for /samples
+2024-12-16 15:15:57,344 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,344 - INFO - Request: GET /methods
+2024-12-16 15:15:57,344 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,345 - INFO - Response: 200 for /experiments
+2024-12-16 15:15:57,345 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,346 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,346 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,349 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:15:57,350 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,350 - INFO - Request: GET /analysts
+2024-12-16 15:15:57,352 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,352 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,353 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:15:57,354 - INFO - Response: 200 for /operators
+2024-12-16 15:15:57,356 - INFO - Response: 200 for /methods
+2024-12-16 15:15:57,357 - INFO - Response: 200 for /analysts
+2024-12-16 15:15:57,364 - INFO - Request: GET /quantitative_results
+2024-12-16 15:15:57,365 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,365 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,367 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:15:57,375 - INFO - Request: GET /qualitative_results
+2024-12-16 15:15:57,375 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,375 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,377 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:15:57,382 - INFO - Request: GET /experiments
+2024-12-16 15:15:57,383 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:15:57,383 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:15:57,384 - INFO - Response: 200 for /experiments
+2024-12-16 15:16:04,415 - INFO - Request: GET /static/uploads/hplc_report.pdf
+2024-12-16 15:16:04,415 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:04,415 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:04,416 - INFO - Response: 304 for /static/uploads/hplc_report.pdf
+2024-12-16 15:16:33,052 - INFO - Request: GET /
+2024-12-16 15:16:33,052 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,052 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,053 - INFO - Response: 200 for /
+2024-12-16 15:16:33,092 - INFO - Request: GET /static/css/styles.css
+2024-12-16 15:16:33,092 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,092 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,093 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 15:16:33,095 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 15:16:33,096 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,096 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,097 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 15:16:33,114 - INFO - Request: GET /experiments
+2024-12-16 15:16:33,115 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,115 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,116 - INFO - Request: GET /samples
+2024-12-16 15:16:33,117 - INFO - Request: GET /quantitative_results
+2024-12-16 15:16:33,117 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,118 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,119 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,119 - INFO - Request: GET /qualitative_results
+2024-12-16 15:16:33,120 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,120 - INFO - Response: 200 for /experiments
+2024-12-16 15:16:33,121 - INFO - Request: GET /methods
+2024-12-16 15:16:33,122 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,123 - INFO - Request: GET /operators
+2024-12-16 15:16:33,123 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,124 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,124 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,125 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,126 - INFO - Request: GET /analysts
+2024-12-16 15:16:33,127 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,128 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:16:33,128 - INFO - Response: 200 for /samples
+2024-12-16 15:16:33,129 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,130 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,130 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:16:33,131 - INFO - Response: 200 for /methods
+2024-12-16 15:16:33,134 - INFO - Response: 200 for /operators
+2024-12-16 15:16:33,134 - INFO - Request: GET /experiments
+2024-12-16 15:16:33,136 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,137 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,137 - INFO - Request: GET /quantitative_results
+2024-12-16 15:16:33,138 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,138 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,139 - INFO - Request: GET /samples
+2024-12-16 15:16:33,140 - INFO - Response: 200 for /analysts
+2024-12-16 15:16:33,140 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,143 - INFO - Request: GET /qualitative_results
+2024-12-16 15:16:33,144 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,144 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,145 - INFO - Request: GET /methods
+2024-12-16 15:16:33,146 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,146 - INFO - Response: 200 for /experiments
+2024-12-16 15:16:33,146 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,149 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:16:33,149 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,150 - INFO - Request: GET /operators
+2024-12-16 15:16:33,153 - INFO - Request: GET /analysts
+2024-12-16 15:16:33,154 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,155 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:16:33,156 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,157 - INFO - Request: GET /quantitative_results
+2024-12-16 15:16:33,157 - INFO - Response: 200 for /samples
+2024-12-16 15:16:33,157 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,157 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,158 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,158 - INFO - Response: 200 for /methods
+2024-12-16 15:16:33,160 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,164 - INFO - Response: 200 for /operators
+2024-12-16 15:16:33,164 - INFO - Response: 200 for /analysts
+2024-12-16 15:16:33,166 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:16:33,170 - INFO - Request: GET /qualitative_results
+2024-12-16 15:16:33,171 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,171 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,172 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:16:33,176 - INFO - Request: GET /experiments
+2024-12-16 15:16:33,176 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:16:33,176 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:16:33,177 - INFO - Response: 200 for /experiments
+2024-12-16 15:17:33,991 - INFO - Request: POST /upload_quantitative_result
+2024-12-16 15:17:33,992 - INFO - Form Data: ImmutableMultiDict([('sampleId', '2004'), ('methodId', '3000'), ('analystId', '7004'), ('resultValue', '99.9'), ('specification', '90.3'), ('passFail', 'TRUE'), ('status', 'Valid')])
+2024-12-16 15:17:33,992 - INFO - Files: ImmutableMultiDict([('pdfFile', <FileStorage: 'hplc_report.pdf' ('application/pdf')>)])
+2024-12-16 15:17:33,998 - INFO - Response: 200 for /upload_quantitative_result
+2024-12-16 15:17:35,114 - INFO - Request: GET /quantitative_results
+2024-12-16 15:17:35,114 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:17:35,114 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:17:35,116 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:18:00,609 - INFO - Request: POST /api/update_methods_status
+2024-12-16 15:18:00,609 - INFO - Data: {'id': '3004', 'status': 'Inactive'}
+2024-12-16 15:18:00,614 - INFO - Response: 200 for /api/update_methods_status
+2024-12-16 15:18:04,735 - INFO - Request: POST /api/update_methods_status
+2024-12-16 15:18:04,735 - INFO - Data: {'id': '3003', 'status': 'Active'}
+2024-12-16 15:18:04,739 - INFO - Response: 200 for /api/update_methods_status
+2024-12-16 15:20:03,853 - INFO - Request: GET /
+2024-12-16 15:20:03,854 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,854 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,854 - INFO - Response: 200 for /
+2024-12-16 15:20:03,898 - INFO - Request: GET /static/css/styles.css
+2024-12-16 15:20:03,898 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,898 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,900 - INFO - Response: 304 for /static/css/styles.css
+2024-12-16 15:20:03,908 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 15:20:03,908 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,908 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,909 - INFO - Response: 304 for /static/js/scripts.js
+2024-12-16 15:20:03,937 - INFO - Request: GET /experiments
+2024-12-16 15:20:03,937 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,937 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,939 - INFO - Request: GET /samples
+2024-12-16 15:20:03,940 - INFO - Request: GET /quantitative_results
+2024-12-16 15:20:03,940 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,940 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,941 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,941 - INFO - Request: GET /qualitative_results
+2024-12-16 15:20:03,941 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,942 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,943 - INFO - Response: 200 for /experiments
+2024-12-16 15:20:03,944 - INFO - Request: GET /methods
+2024-12-16 15:20:03,944 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,952 - INFO - Request: GET /operators
+2024-12-16 15:20:03,954 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,961 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,962 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,964 - INFO - Response: 200 for /samples
+2024-12-16 15:20:03,965 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,971 - INFO - Request: GET /analysts
+2024-12-16 15:20:03,972 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,973 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:20:03,973 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,975 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:20:03,977 - INFO - Response: 200 for /methods
+2024-12-16 15:20:03,979 - INFO - Request: GET /experiments
+2024-12-16 15:20:03,980 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,980 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,982 - INFO - Request: GET /samples
+2024-12-16 15:20:03,983 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,983 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,983 - INFO - Response: 200 for /operators
+2024-12-16 15:20:03,985 - INFO - Response: 200 for /analysts
+2024-12-16 15:20:03,986 - INFO - Request: GET /quantitative_results
+2024-12-16 15:20:03,988 - INFO - Response: 200 for /experiments
+2024-12-16 15:20:03,989 - INFO - Request: GET /qualitative_results
+2024-12-16 15:20:03,989 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,992 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,992 - INFO - Request: GET /methods
+2024-12-16 15:20:03,993 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,994 - INFO - Response: 200 for /samples
+2024-12-16 15:20:03,995 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,995 - INFO - Request: GET /operators
+2024-12-16 15:20:03,995 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,996 - INFO - Request: GET /analysts
+2024-12-16 15:20:03,997 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,997 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,997 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:03,998 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:03,998 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:20:03,999 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:04,000 - INFO - Response: 200 for /methods
+2024-12-16 15:20:04,002 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:20:04,005 - INFO - Response: 200 for /operators
+2024-12-16 15:20:04,007 - INFO - Response: 200 for /analysts
+2024-12-16 15:20:04,049 - INFO - Request: GET /quantitative_results
+2024-12-16 15:20:04,050 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:04,050 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:04,052 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:20:04,089 - INFO - Request: GET /qualitative_results
+2024-12-16 15:20:04,089 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:04,090 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:04,092 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:20:04,099 - INFO - Request: GET /experiments
+2024-12-16 15:20:04,099 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:20:04,099 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:20:04,101 - INFO - Response: 200 for /experiments
+2024-12-16 15:22:11,179 - INFO - Request: GET /static/uploads/hplc_report.pdf
+2024-12-16 15:22:11,179 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:22:11,179 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:22:11,193 - INFO - Response: 200 for /static/uploads/hplc_report.pdf
+2024-12-16 15:22:42,368 - INFO - Request: GET /api/methods
+2024-12-16 15:22:42,368 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:22:42,368 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:22:42,370 - INFO - Response: 200 for /api/methods
+2024-12-16 15:22:49,730 - INFO - Request: GET /api/experiments
+2024-12-16 15:22:49,731 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:22:49,731 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:22:49,732 - INFO - Response: 200 for /api/experiments
+2024-12-16 15:22:56,678 - INFO - Request: GET /qualitative_results
+2024-12-16 15:22:56,679 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:22:56,679 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:22:56,680 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:22:56,685 - INFO - Request: GET /experiments
+2024-12-16 15:22:56,685 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:22:56,685 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:22:56,687 - INFO - Response: 200 for /experiments
+2024-12-16 15:24:08,577 - INFO - Request: GET /
+2024-12-16 15:24:08,577 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,577 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,578 - INFO - Response: 200 for /
+2024-12-16 15:24:08,684 - INFO - Request: GET /static/css/styles.css
+2024-12-16 15:24:08,684 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,684 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,686 - INFO - Response: 200 for /static/css/styles.css
+2024-12-16 15:24:08,690 - INFO - Request: GET /static/js/scripts.js
+2024-12-16 15:24:08,692 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,692 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,694 - INFO - Response: 200 for /static/js/scripts.js
+2024-12-16 15:24:08,922 - INFO - Request: GET /experiments
+2024-12-16 15:24:08,922 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,923 - INFO - Request: GET /samples
+2024-12-16 15:24:08,925 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,925 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,927 - INFO - Request: GET /quantitative_results
+2024-12-16 15:24:08,927 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,928 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,929 - INFO - Request: GET /qualitative_results
+2024-12-16 15:24:08,929 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,930 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,931 - INFO - Request: GET /methods
+2024-12-16 15:24:08,932 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,933 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,934 - INFO - Request: GET /operators
+2024-12-16 15:24:08,936 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,937 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:24:08,937 - INFO - Response: 200 for /experiments
+2024-12-16 15:24:08,938 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,939 - INFO - Response: 200 for /samples
+2024-12-16 15:24:08,940 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:24:08,941 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,943 - INFO - Response: 200 for /methods
+2024-12-16 15:24:08,944 - INFO - Request: GET /analysts
+2024-12-16 15:24:08,951 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,951 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,957 - INFO - Response: 200 for /operators
+2024-12-16 15:24:08,958 - INFO - Response: 200 for /analysts
+2024-12-16 15:24:08,960 - INFO - Request: GET /experiments
+2024-12-16 15:24:08,960 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,962 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,963 - INFO - Request: GET /samples
+2024-12-16 15:24:08,964 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,966 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,970 - INFO - Request: GET /quantitative_results
+2024-12-16 15:24:08,971 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,971 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,973 - INFO - Request: GET /methods
+2024-12-16 15:24:08,974 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,974 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,976 - INFO - Request: GET /operators
+2024-12-16 15:24:08,978 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,978 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,980 - INFO - Request: GET /analysts
+2024-12-16 15:24:08,980 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,982 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,983 - INFO - Response: 200 for /experiments
+2024-12-16 15:24:08,984 - INFO - Response: 200 for /samples
+2024-12-16 15:24:08,984 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:24:08,986 - INFO - Response: 200 for /methods
+2024-12-16 15:24:08,993 - INFO - Request: GET /qualitative_results
+2024-12-16 15:24:08,993 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:08,993 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:08,999 - INFO - Response: 200 for /operators
+2024-12-16 15:24:09,005 - INFO - Response: 200 for /analysts
+2024-12-16 15:24:09,006 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:24:09,080 - INFO - Request: GET /favicon.ico
+2024-12-16 15:24:09,081 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:09,081 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:09,081 - ERROR - Error occurred: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\flask\ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Masters\Databases\Project_Sample_Management\pythonProject1\.venv\Lib\site-packages\werkzeug\routing\map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2024-12-16 15:24:09,113 - INFO - Request: GET /quantitative_results
+2024-12-16 15:24:09,174 - INFO - Response: 500 for /favicon.ico
+2024-12-16 15:24:09,174 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:09,174 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:09,176 - INFO - Response: 200 for /quantitative_results
+2024-12-16 15:24:09,188 - INFO - Request: GET /qualitative_results
+2024-12-16 15:24:09,189 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:09,189 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:09,190 - INFO - Response: 200 for /qualitative_results
+2024-12-16 15:24:09,204 - INFO - Request: GET /experiments
+2024-12-16 15:24:09,204 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:24:09,204 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:24:09,206 - INFO - Response: 200 for /experiments
+2024-12-16 15:27:30,788 - INFO - Request: POST /add_method
+2024-12-16 15:27:30,789 - INFO - Data: {'name': 'AAS', 'description': 'Flame AAS for qualitative metal detection'}
+2024-12-16 15:27:30,793 - INFO - Response: 200 for /add_method
+2024-12-16 15:27:32,314 - INFO - Request: GET /methods
+2024-12-16 15:27:32,315 - INFO - Form Data: ImmutableMultiDict([])
+2024-12-16 15:27:32,315 - INFO - Files: ImmutableMultiDict([])
+2024-12-16 15:27:32,316 - INFO - Response: 200 for /methods
